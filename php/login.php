@@ -3,8 +3,8 @@
 session_start();
 $admin_name="admin";
 $admin_pwd="admin";
-if (isset($_POST["username"]) && isset($_POST["password"])) {
-    $username = $_POST["username"];
+if (isset($_POST["login"]) && isset($_POST["password"])) {
+    $username = $_POST["login"];
     $password = $_POST["password"];
     
     if ($username == $admin_name && $password == $admin_pwd) {

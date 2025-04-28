@@ -10,7 +10,7 @@ $results = $statement->fetchAll(PDO::FETCH_OBJ);
 foreach ($results as $serie):
     echo(
         "<div class='carte'>
-            <img class ='carte-image' src='../photos/saison/$serie->affiche'/>
+            <img class ='carte-images' src='../photos/saison/$serie->affiche'/>
             <p>$serie->titre</p>
         </div>"
     );
