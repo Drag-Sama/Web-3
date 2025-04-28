@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 28 avr. 2025 à 11:43
+-- Généré le : lun. 28 avr. 2025 à 13:48
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -28,16 +28,42 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `acteur` (
-  `Nom` varchar(255) NOT NULL,
-  `Photo` text NOT NULL
+  `nom` varchar(255) NOT NULL,
+  `photo` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `acteur`
 --
 
-INSERT INTO `acteur` (`Nom`, `Photo`) VALUES
-('Frankie Muniz', 'frankie_muniz.jpg');
+INSERT INTO `acteur` (`nom`, `photo`) VALUES
+('Bryan Cranston', 'bryan_cranston.jpg'),
+('Christopher Masterson', 'christopher_masterson.jpg'),
+('Erik Per Sullivan', 'erik_per_sullivan.jpg'),
+('Frankie Muniz', 'frankie_muniz.jpg'),
+('Jane Kaczmarek', 'jane-kaczmarek.jpg'),
+('Justin Berfied', 'justin-berfied.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contient`
+--
+
+CREATE TABLE `contient` (
+  `titre_saison` varchar(255) NOT NULL,
+  `id_episode` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `contient`
+--
+
+INSERT INTO `contient` (`titre_saison`, `id_episode`) VALUES
+('Saison 1 Malcom', 1),
+('Saison 1 Malcom', 2),
+('Saison 1 Malcom', 3),
+('Saison 1 Malcom', 4);
 
 -- --------------------------------------------------------
 
@@ -46,20 +72,44 @@ INSERT INTO `acteur` (`Nom`, `Photo`) VALUES
 --
 
 CREATE TABLE `episode` (
-  `Titre` text NOT NULL,
-  `Realisateur` varchar(255) NOT NULL,
-  `Desc` text NOT NULL,
-  `Duree` int(11) NOT NULL,
-  `Id_Episode` int(11) NOT NULL
+  `titre` text NOT NULL,
+  `desc` text NOT NULL,
+  `duree` int(11) NOT NULL,
+  `id_Episode` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `episode`
 --
 
-INSERT INTO `episode` (`Titre`, `Realisateur`, `Desc`, `Duree`, `Id_Episode`) VALUES
-(' Je ne suis pas un monstre', 'Todd Holland', 'Malcolm, découvre qu\'il est atteint d\'un mal incurable : il a un QI de 165 !', 23, 1),
-('Alerte rouge', 'Arlene Sanford', 'Lois et Hal fêtent leur anniversaire de mariage. Mais Lois découvre sa robe de soirée brûlée...', 23, 2);
+INSERT INTO `episode` (`titre`, `desc`, `duree`, `id_Episode`) VALUES
+(' Je ne suis pas un monstre', 'Malcolm, découvre qu\'il est atteint d\'un mal incurable : il a un QI de 165 !', 23, 1),
+('Alerte rouge', 'Lois et Hal fêtent leur anniversaire de mariage. Mais Lois découvre sa robe de soirée brûlée...', 23, 2),
+('Seuls à la maison', 'Lois et Hal confient à Francis la garde des trois enfants pour le week-end.', 23, 3),
+('Honte', 'Malcolm est rongé par le remords quand il apprend qu’il a frappé un enfant de sept ans.', 23, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `joue`
+--
+
+CREATE TABLE `joue` (
+  `titre_saison` varchar(255) NOT NULL,
+  `nom_acteur` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `joue`
+--
+
+INSERT INTO `joue` (`titre_saison`, `nom_acteur`) VALUES
+('Saison 1 Malcom', 'Bryan Cranston'),
+('Saison 1 Malcom', 'Christopher Masterson'),
+('Saison 1 Malcom', 'Erik Per Sullivan'),
+('Saison 1 Malcom', 'Frankie Muniz'),
+('Saison 1 Malcom', 'Jane Kaczmarek'),
+('Saison 1 Malcom', 'Justin Berfied');
 
 -- --------------------------------------------------------
 
@@ -68,17 +118,41 @@ INSERT INTO `episode` (`Titre`, `Realisateur`, `Desc`, `Duree`, `Id_Episode`) VA
 --
 
 CREATE TABLE `realisateur` (
-  `Nom` varchar(255) NOT NULL,
-  `Photo` text NOT NULL
+  `nom` varchar(255) NOT NULL,
+  `photo` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `realisateur`
 --
 
-INSERT INTO `realisateur` (`Nom`, `Photo`) VALUES
+INSERT INTO `realisateur` (`nom`, `photo`) VALUES
+('Andrew Orenstein', 'andrew_orenstein.png'),
 ('Arlene Sanford', 'arlene_sanford.jpg'),
+('Nick Marck', 'nick_marck.jpg'),
 ('Todd Holland', 'todd_holland.png');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `realise`
+--
+
+CREATE TABLE `realise` (
+  `nom_real` varchar(255) NOT NULL,
+  `id_episode` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `realise`
+--
+
+INSERT INTO `realise` (`nom_real`, `id_episode`) VALUES
+('Todd Holland', 1),
+('Arlene Sanford', 2),
+('Todd Holland', 3),
+('Andrew Orenstein', 3),
+('Nick Marck', 4);
 
 -- --------------------------------------------------------
 
@@ -87,20 +161,18 @@ INSERT INTO `realisateur` (`Nom`, `Photo`) VALUES
 --
 
 CREATE TABLE `saison` (
-  `Titre` varchar(255) NOT NULL,
-  `Num_Saison` int(255) NOT NULL,
-  `Affiche` text NOT NULL,
-  `Episodes` int(11) NOT NULL,
-  `Acteurs` varchar(255) NOT NULL,
-  `titre_serie` varchar(255) NOT NULL
+  `num_saison` int(255) NOT NULL,
+  `affiche` text NOT NULL,
+  `titre_serie` varchar(255) NOT NULL,
+  `titre` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `saison`
 --
 
-INSERT INTO `saison` (`Titre`, `Num_Saison`, `Affiche`, `Episodes`, `Acteurs`, `titre_serie`) VALUES
-('Saison 1 Malcom', 1, 'malcom_saison1.jpg', 1, 'Frankie Muniz', '0');
+INSERT INTO `saison` (`num_saison`, `affiche`, `titre_serie`, `titre`) VALUES
+(1, 'malcom_saison1.jpg', 'Malcom', 'Saison 1 Malcom');
 
 -- --------------------------------------------------------
 
@@ -109,9 +181,16 @@ INSERT INTO `saison` (`Titre`, `Num_Saison`, `Affiche`, `Episodes`, `Acteurs`, `
 --
 
 CREATE TABLE `serie` (
-  `Titre` varchar(255) NOT NULL,
-  `Tag` varchar(255) NOT NULL
+  `titre` varchar(255) NOT NULL,
+  `tag` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `serie`
+--
+
+INSERT INTO `serie` (`titre`, `tag`) VALUES
+('Malcom', 'humour');
 
 -- --------------------------------------------------------
 
@@ -139,34 +218,54 @@ INSERT INTO `tag` (`nom`) VALUES
 -- Index pour la table `acteur`
 --
 ALTER TABLE `acteur`
-  ADD PRIMARY KEY (`Nom`);
+  ADD PRIMARY KEY (`nom`);
+
+--
+-- Index pour la table `contient`
+--
+ALTER TABLE `contient`
+  ADD KEY `epi_fk_key` (`id_episode`),
+  ADD KEY `sa_fk_key` (`titre_saison`);
 
 --
 -- Index pour la table `episode`
 --
 ALTER TABLE `episode`
-  ADD PRIMARY KEY (`Id_Episode`),
-  ADD KEY `rel_fk_key` (`Realisateur`);
+  ADD PRIMARY KEY (`id_Episode`);
+
+--
+-- Index pour la table `joue`
+--
+ALTER TABLE `joue`
+  ADD KEY `sai_fk_key` (`titre_saison`),
+  ADD KEY `ac_fk_key` (`nom_acteur`);
 
 --
 -- Index pour la table `realisateur`
 --
 ALTER TABLE `realisateur`
-  ADD PRIMARY KEY (`Nom`);
+  ADD PRIMARY KEY (`nom`);
+
+--
+-- Index pour la table `realise`
+--
+ALTER TABLE `realise`
+  ADD KEY `epis_fk_key` (`id_episode`),
+  ADD KEY `real_fk_key` (`nom_real`);
 
 --
 -- Index pour la table `saison`
 --
 ALTER TABLE `saison`
-  ADD KEY `ep_fk_key` (`Episodes`),
-  ADD KEY `act_fk_key` (`Acteurs`);
+  ADD PRIMARY KEY (`titre`),
+  ADD KEY `ser_fk_key` (`titre_serie`);
 
 --
 -- Index pour la table `serie`
 --
 ALTER TABLE `serie`
-  ADD PRIMARY KEY (`Titre`),
-  ADD KEY `tag_fk_key` (`Tag`);
+  ADD PRIMARY KEY (`titre`),
+  ADD KEY `tag_fk_key` (`tag`);
 
 --
 -- Index pour la table `tag`
@@ -179,17 +278,31 @@ ALTER TABLE `tag`
 --
 
 --
+-- Contraintes pour la table `contient`
+--
+ALTER TABLE `contient`
+  ADD CONSTRAINT `epi_fk_key` FOREIGN KEY (`id_episode`) REFERENCES `episode` (`id_Episode`),
+  ADD CONSTRAINT `sa_fk_key` FOREIGN KEY (`titre_saison`) REFERENCES `saison` (`titre`);
+
+--
 -- Contraintes pour la table `episode`
 --
 ALTER TABLE `episode`
   ADD CONSTRAINT `rel_fk_key` FOREIGN KEY (`Realisateur`) REFERENCES `realisateur` (`Nom`);
 
 --
--- Contraintes pour la table `saison`
+-- Contraintes pour la table `joue`
 --
-ALTER TABLE `saison`
-  ADD CONSTRAINT `act_fk_key` FOREIGN KEY (`Acteurs`) REFERENCES `acteur` (`Nom`),
-  ADD CONSTRAINT `ep_fk_key` FOREIGN KEY (`Episodes`) REFERENCES `episode` (`Id_Episode`);
+ALTER TABLE `joue`
+  ADD CONSTRAINT `ac_fk_key` FOREIGN KEY (`nom_acteur`) REFERENCES `acteur` (`Nom`),
+  ADD CONSTRAINT `sai_fk_key` FOREIGN KEY (`titre_saison`) REFERENCES `saison` (`titre`);
+
+--
+-- Contraintes pour la table `realise`
+--
+ALTER TABLE `realise`
+  ADD CONSTRAINT `epis_fk_key` FOREIGN KEY (`id_episode`) REFERENCES `episode` (`id_Episode`),
+  ADD CONSTRAINT `real_fk_key` FOREIGN KEY (`nom_real`) REFERENCES `realisateur` (`Nom`);
 
 --
 -- Contraintes pour la table `serie`
