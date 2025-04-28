@@ -285,12 +285,6 @@ ALTER TABLE `contient`
   ADD CONSTRAINT `sa_fk_key` FOREIGN KEY (`titre_saison`) REFERENCES `saison` (`titre`);
 
 --
--- Contraintes pour la table `episode`
---
-ALTER TABLE `episode`
-  ADD CONSTRAINT `rel_fk_key` FOREIGN KEY (`Realisateur`) REFERENCES `realisateur` (`Nom`);
-
---
 -- Contraintes pour la table `joue`
 --
 ALTER TABLE `joue`
