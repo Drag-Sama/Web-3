@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 
-<?php 
-require "php/classes/template.php";
-require "php/displayResearch.php";
+<?php require "php/classes/template.php";
 require "php/classes/BD.php";
-$BD = new BD();
-$BD->connectBD();
-displayResearch($BD);
+require "php/researchSerie.php";
+require "php/classes/BD.php";
 ob_start();
 
 ?>
     <form action="/choiceTag.php">
         <label for="tag">Tags :</label>
         <select name="tag">
-        <?php displayTags(); ?>
+
         </select>
     </form>
     <script src="filterTags.js"></script>
@@ -26,5 +23,6 @@ ob_start();
 $content = ob_get_clean();
 Template::render($content);
 
-echo get_series();
+$bd = new BD();
+echo $bd.get_series();
 ?>
