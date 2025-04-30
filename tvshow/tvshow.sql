@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 28 avr. 2025 à 15:59
+-- Généré le : mer. 30 avr. 2025 à 11:32
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -38,10 +38,14 @@ CREATE TABLE `acteur` (
 
 INSERT INTO `acteur` (`nom`, `photo`) VALUES
 ('Aaron Paul', 'aaron_paul.jpg'),
+('Alexis Tomassian', 'alexis_tomassian.jpg'),
+('Anna Gunn', 'anna_gunn.jpg'),
 ('Bryan Cranston', 'bryan_cranston.jpg'),
 ('Christopher Masterson', 'christopher_masterson.jpg'),
+('Dorothée Pousséo', 'dorothée-pousséo.jpg'),
 ('Erik Per Sullivan', 'erik_per_sullivan.jpg'),
 ('Frankie Muniz', 'frankie_muniz.jpg'),
+('Frédéric Souterelle', 'frédéric_souterelle.jpg'),
 ('Jane Kaczmarek', 'jane-kaczmarek.jpg'),
 ('Justin Berfied', 'justin-berfied.jpg');
 
@@ -70,7 +74,32 @@ INSERT INTO `contient` (`titre_saison`, `id_episode`) VALUES
 ('Saison 1 Breaking Bad', 7),
 ('Saison 1 Breaking Bad', 8),
 ('Saison 1 Breaking Bad', 9),
-('Saison 1 Breaking Bad', 10);
+('Saison 1 Breaking Bad', 10),
+('Saison 1 Breaking Bad', 11),
+('Saison 1 Breaking Bad', 12),
+('Saison 2 Breaking Bad', 13),
+('Saison 2 Breaking Bad', 14),
+('Saison 2 Breaking Bad', 15),
+('Saison 2 Breaking Bad', 16),
+('Saison 2 Breaking Bad', 17),
+('Saison 2 Breaking Bad', 18),
+('Saison 2 Breaking Bad', 19),
+('Saison 2 Breaking Bad', 20),
+('Saison 2 Breaking Bad', 21),
+('Saison 2 Breaking Bad', 22),
+('Saison 2 Breaking Bad', 23),
+('Saison 2 Breaking Bad', 24),
+('Saison 2 Breaking Bad', 25),
+('Saison 1 Cyberpunk Edgerunners', 26),
+('Saison 1 Cyberpunk Edgerunners', 27),
+('Saison 1 Cyberpunk Edgerunners', 28),
+('Saison 1 Cyberpunk Edgerunners', 29),
+('Saison 1 Cyberpunk Edgerunners', 30),
+('Saison 1 Cyberpunk Edgerunners', 31),
+('Saison 1 Cyberpunk Edgerunners', 32),
+('Saison 1 Cyberpunk Edgerunners', 33),
+('Saison 1 Cyberpunk Edgerunners', 34),
+('Saison 1 Cyberpunk Edgerunners', 35);
 
 -- --------------------------------------------------------
 
@@ -90,6 +119,7 @@ CREATE TABLE `episode` (
 --
 
 INSERT INTO `episode` (`titre`, `desc`, `duree`, `id_Episode`) VALUES
+('', '', 0, 0),
 (' Je ne suis pas un monstre', 'Malcolm, découvre qu\'il est atteint d\'un mal incurable : il a un QI de 165 !', 23, 1),
 ('Alerte rouge', 'Lois et Hal fêtent leur anniversaire de mariage. Mais Lois découvre sa robe de soirée brûlée...', 23, 2),
 ('Seuls à la maison', 'Lois et Hal confient à Francis la garde des trois enfants pour le week-end.', 23, 3),
@@ -99,7 +129,32 @@ INSERT INTO `episode` (`titre`, `desc`, `duree`, `id_Episode`) VALUES
 ('Le choix', 'Après leur mésaventure dans le désert, Walter et Pinkman doivent se débarrasser des corps des deux trafiquants qu\'ils ont éliminé. Leur tâche se complique quand ils découvrent avec stupéfaction que l\'un d\'entre eux a survécu. Les deux acolytes ne sont pas d\'accord quant à la marche à suivre. De son côté, Skyler s\'interroge sur le comportement étrange de son mari. Intriguée par un appel, elle mène l\'enquête pour découvrir ce qu\'il fabrique. Au lycée, Walter ne parvient pas à faire abstraction de ses ennuis...', 42, 7),
 ('Dérapage', 'Walter n\'a toujours pas effectué sa part du marché conclu avec Jesse qui le presse d\'en finir. Il tergiverse et hésite à commettre un acte qui pourrait le hanter toute sa vie et mettre sa famille en danger. Alors qu\'elle peint la chambre du bébé avec sa soeur, Skyler lui raconte qu\'elle écrit un récit sur un personnage drogué et lui pose des questions sur la marijuana.', 42, 8),
 ('Retour aux sources', 'Hank informe ses troupes que de nouveaux dealers opèrent à Albuquerque, proposant une drogue de très haute qualité. Lors d\'un barbecue en famille chez les White, Skyler explose en sanglots, forçant Walt à révéler à sa famille qu\'il est atteint d\'un cancer des poumons. Marie propose de faire jouer ses relations pour lui obtenir un rendez-vous chez un oncologue de renom.', 42, 9),
-('Vivre ou survivre', 'Jesse tente d\'obtenir un travail régulier mais il constate rapidement que sans qualifications et sans expérience, ce n\'est pas chose facile. Il se tourne donc à nouveau vers la fabrication de drogue avec l\'aide d\'un ancien ami. Toutefois, sans les connaissances de Walt, il ne parvient pas à obtenir la qualité voulue.\r\nWalt, lui, revoit un ancien collègue, aujourd\'hui très riche, qui lui propose un travail et de payer son traitement.', 42, 10);
+('Vivre ou survivre', 'Jesse tente d\'obtenir un travail régulier mais il constate rapidement que sans qualifications et sans expérience, ce n\'est pas chose facile. Il se tourne donc à nouveau vers la fabrication de drogue avec l\'aide d\'un ancien ami. Toutefois, sans les connaissances de Walt, il ne parvient pas à obtenir la qualité voulue.\r\nWalt, lui, revoit un ancien collègue, aujourd\'hui très riche, qui lui propose un travail et de payer son traitement.', 42, 10),
+('Bluff', 'Walt et Jesse reprennent les affaires, mais Walt constate qu\'en vendant en petite quantité ils ne gagnaient pas assez d\'argent. Walt suggère donc à Jesse de trouver un distributeur qui leur achèterait 500g d\'un coup. La transaction ne se déroule pas comme prévu.\r\nDe son côté, Hank poursuit son enquête et le masque trouvé dans le désert le ramène directement au laboratoire de Walt.', 47, 11),
+('Le Fruit défendu', 'Walt a annoncé à Tuco qu\'il pouvait lui fournir que 2 kg de &quot;cristaux&quot; par semaine. Jesse lui apprend alors qu\'il est difficile d\'obtenir l\'un des ingrédients clé de la préparation dans une quantité suffisante. Ils sont alors forcés de changer leur technique de préparation et de se procurer par eux-même tous les ingrédients nécessaire. Pour cela, ils n\'hésitent pas à entrer par effraction dans un entrepôt pharmaceutique.\r\nAu cours d\'une fête organisée pour le futur bébé, Marie offre un diadème en or. Skyler, qui trouve ce cadeau trop extravagant, décide de le rapporter à la bijouterie.', 47, 12),
+('Traqués', 'Walter et Jesse rencontrent dans une casse automobile un gros revendeur local. La situation dégénère.', 42, 13),
+('Chasse à l\'homme', 'Tuco retient Jesse et Walt prisonniers dans la maison délabrée de son oncle. Le dealer découvre la véritable identité du professeur de chimie et la famille de celui-ci. Il lui explique son projet : l\'emmener au Mexique, où il pourra fabriquer de la méthamphétamine à longueur de journée. La disparition inexpliquée de Walt pousse Marie et Skyler à oublier leur querelle le temps des recherches. Tandis que son équipe s\'apprête à faire une descente dans le repaire de Tuco, Hank mène sa propre enquête pour retrouver son beau-frère. La piste d\'un deuxième téléphone et l\'intuition de son épouse l\'amènent à rendre visite à madame Pinkman, la mère de Jesse', 42, 14),
+('Alibi', 'Après avoir échappé à Tuco et assisté à sa mort pendant une fusillade avec Hank, Walt et Jesse traversent le désert pour rentrer chez eux. Walt est finalement retrouvé nu dans un supermarché. Transporté à l\'hôpital, il semble souffrir d\'amnésie...', 42, 15),
+('Au fond du gouffre', 'Jesse est mis à la porte de chez lui par ses parents ; aucun de ses potes ne veut l\'accueillir. Il supplie Walt de lui donner la part d\'argent qu\'il estime être la sienne. Walt ne veut plus entendre parler de lui...', 42, 16),
+('Nouveau départ', 'La tension est à son comble entre Walt et Skyler, qui réclame des explications. De son côté, Jesse monte un réseau pour écouler la production de «meth». Hank reçoit une promotion et est envoyé à El Paso, ville frontalière avec le Mexique où règne la loi des cartels', 42, 17),
+('Règlements de comptes', 'Skinny, l\'un des dealers de Jesse, se fait braquer par un couple de drogués. Walter veut que son associé règle une bonne fois pour toutes ces incidents, afin que plus personne ne leur manque de respect. Mais la remise au pas ne se passe pas du tout comme prévu...', 42, 18),
+('Poisson lune', 'Ne parvenant pas à joindre Jesse, Walt se retrouve à distribuer lui-même la drogue aux dealers. Depuis que son associé a une réputation de tueur, il n\'a aucun mal à se faire payer et en profite pour étendre son trafic...', 42, 19),
+('Appelez donc Saul', 'Badger se fait arrêter alors qu\'il fourgue de la drogue. La brigade des stups est décidée à le faire parler et lui propose un deal : sa remise en liberté à condition qu\'il donne le nom de son fournisseur. Très inquiets, Walt et Jesse s\'adressent à un avocat pour qu\'il le défende. Mais celui-ci considère que le deal proposé à Badger est très bon...', 42, 20),
+('Seuls au monde', 'Alors qu\'il se croit condamné à une mort imminente, Walt persuade Jesse d\'aller passer quatre jours dans le désert pour produire une importante quantité de métamphétamine. Tout se passe bien jusqu\'au moment où les deux compères tentent de redémarrer le camping-car', 42, 21),
+('Introspection', 'Walt, qui vient d\'apprendre qu\'il est en rémission alors qu\'il se croyait presque mort, est pourtant de plus en plus lunatique. Lors d\'une petite fête familiale, il s\'en prend violemment à Hank, puis, honteux, entreprend dans les jours qui suivent de réparer tout ce qui peut l\'être dans la maison, au grand désarroi des siens...', 42, 22),
+('Nouvelle donne', 'Les médecins envisagent désormais une opération pour Walt, mais il n\'a pas le temps de s\'en préoccuper. L\'un de ses dealers vient de se faire abattre en pleine rue tandis que Jesse, loin de prendre les mesures qui s\'imposent, fuit à nouveau la réalité dans les plaisirs artificiels...', 42, 23),
+('Vie et mort', 'Après avoir conclu un deal avec son nouveau distributeur, Walter court au chevet de sa femme, qui vient d\'accoucher. Pendant ce temps, pour l\'aider à récolter l\'argent nécessaire à son opération, son fils décide de créer un site Internet. Quant à Jesse, n\'ayant aucun souvenir du passage de Walt, il est persuadé qu\'on lui a volé la drogue...', 42, 24),
+('Effet papillon', 'Quand Jesse découvre le corps inerte de Jane terrassée par une overdose, son monde s\'écroule... De son côté, Walter, sur le point de se faire opérer, révèle sous les effets de la drogue tous ses mensonges à sa femme, qui lui demande bientôt de quitter la maison...', 42, 25),
+('Let You Down', 'David retourne à la réalité après avoir streamé de la braindance illégale toute la nuit : un appartement délabré, une machine à laver cassée et une mère épuisée.', 26, 26),
+('Like a Boy', 'Après s\'être installé un implant dans le corps, David se rend à l\'Académie pour se venger de son harceleur. Il rencontre une femme mystérieuse qui veut le recruter.', 26, 27),
+('Smooth Criminal', 'David cherche à tout prix à rejoindre un groupe d\'edgerunners remuants. Pendant ce temps, d\'obscures forces tentent de le ramener vers l\'Académie Arasaka.', 26, 28),
+('Lucky You', 'Impatient de faire ses armes en tant qu\'edgerunner, David réclame une autre mission à Maine. Mais celui-ci demande à Lucy de se charger de son entraînement.', 26, 29),
+('All Eyez On Me', 'David suggère un plan astucieux pour la prochaine mission de l\'équipe. Mais il ne tarde pas à se rendre compte qu\'il ne faut pas sous-estimer leur cible.', 26, 30),
+('Girl on Fire', 'Maine n\'est pas lui-même. Mais l\'équipe a d\'autres préoccupations : elle doit récupérer des informations vitales en sondant un prisonnier et le temps est compté.', 26, 31),
+('Stronger', 'David est devenu une célébrité accroc aux implants cybernétiques. Il entraîne son équipe dans une nouvelle mission, et une vieille connaissance lui propose un boulot.', 26, 32),
+('Stay', 'Faraday se retrouve coincé entre Arasaka et Militech. Lucy et Rebecca demandent à David d\'expliquer son changement de comportement, mais il refuse de les écouter.', 26, 33),
+('Humanity', 'Les ravisseurs de Lucy découvrent sa mission secrète et son sinistre passé. David et son équipe se lancent dans le boulot de Faraday, mais quelque chose cloche.', 26, 34),
+('My Moon My Man', 'Au bord de la cyberpsychose mais déterminé à sauver Lucy, David fait irruption à Night City alors qu\'Arasaka cherche à déployer l\'arme fatale ultime.', 26, 35);
 
 -- --------------------------------------------------------
 
@@ -124,7 +179,14 @@ INSERT INTO `joue` (`titre_saison`, `nom_acteur`) VALUES
 ('Saison 1 Malcolm', 'Erik Per Sullivan'),
 ('Saison 1 Malcolm', 'Christopher Masterson'),
 ('Saison 1 Breaking Bad', 'Aaron Paul'),
-('Saison 1 Breaking Bad', 'Bryan Cranston');
+('Saison 1 Breaking Bad', 'Bryan Cranston'),
+('Saison 2 Breaking Bad', 'Aaron Paul'),
+('Saison 2 Breaking Bad', 'Bryan Cranston'),
+('Saison 1 Breaking Bad', 'Anna Gunn'),
+('Saison 2 Breaking Bad', 'Anna Gunn'),
+('Saison 1 Cyberpunk Edgerunners', 'Alexis Tomassian'),
+('Saison 1 Cyberpunk Edgerunners', 'Dorothée Pousséo'),
+('Saison 1 Cyberpunk Edgerunners', 'Frédéric Souterelle');
 
 -- --------------------------------------------------------
 
@@ -145,9 +207,18 @@ INSERT INTO `realisateur` (`nom`, `photo`) VALUES
 ('Adam Bernstein', 'adam_bernstein.jpg'),
 ('Andrew Orenstein', 'andrew_orenstein.png'),
 ('Arlene Sanford', 'arlene_sanford.jpg'),
+('Bryan Cranston', 'bryan_cranston.jpg'),
+('Charles Haid', 'charles_haid.jpg'),
+('Félix Enríquez Alcalá', 'félix_enríquez_alcalá.jpg'),
+('Hiroyuki Imaishi', 'hiroyuki_imaishi.jpg'),
 ('Jeff Melman', 'jeff_melman.jpg'),
 ('Jim McKay', 'jim_mckay.jpg'),
+('Johan Renck', 'johan_renck.jpg'),
+('John Dahl', 'john_dahl.jpg'),
 ('Nick Marck', 'nick_marck.jpg'),
+('Peter Medak', 'peter_medak.jpg'),
+('Terry McDonough', 'terry_mcdonough.jpg'),
+('Tim Hunter', 'tim_hunter.jpg'),
 ('Todd Holland', 'todd_holland.png'),
 ('Tricia Borck.jpg', 'tricia_borck.jpg'),
 ('Vince Gilligan', 'vince_gilligan.jpg');
@@ -178,7 +249,32 @@ INSERT INTO `realise` (`nom_real`, `id_episode`) VALUES
 ('Adam Bernstein', 7),
 ('Adam Bernstein', 8),
 ('Jim McKay', 9),
-('Tricia Borck.jpg', 10);
+('Tricia Borck.jpg', 10),
+('Peter Medak', 11),
+('Tim Hunter', 12),
+('Bryan Cranston', 13),
+('Charles Haid', 14),
+('Terry McDonough', 15),
+('John Dahl', 16),
+('Johan Renck', 17),
+('Peter Medak', 18),
+('Félix Enríquez Alcalá', 19),
+('Terry McDonough', 20),
+('Terry McDonough', 21),
+('Terry McDonough', 22),
+('Terry McDonough', 23),
+('Terry McDonough', 24),
+('Adam Bernstein', 25),
+('Hiroyuki Imaishi', 26),
+('Hiroyuki Imaishi', 27),
+('Hiroyuki Imaishi', 28),
+('Hiroyuki Imaishi', 29),
+('Hiroyuki Imaishi', 30),
+('Hiroyuki Imaishi', 31),
+('Hiroyuki Imaishi', 32),
+('Hiroyuki Imaishi', 33),
+('Hiroyuki Imaishi', 34),
+('Hiroyuki Imaishi', 35);
 
 -- --------------------------------------------------------
 
@@ -190,16 +286,19 @@ CREATE TABLE `saison` (
   `titre` varchar(255) NOT NULL,
   `titre_serie` varchar(255) NOT NULL,
   `affiche` text NOT NULL,
-  `descr` text NOT NULL
+  `descr` text NOT NULL,
+  `num_saison` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `saison`
 --
 
-INSERT INTO `saison` (`titre`, `titre_serie`, `affiche`, `descr`) VALUES
-('Saison 1 Breaking Bad', 'Breaking Bad', 'breaking_bad_saison1.jpg', 'Walter White, 50 ans, est professeur de chimie dans un lycée du Nouveau-Mexique. Son quotidien est bouleversé lorsqu’il apprend qu’il est atteint d’un cancer des poumons incurable. Il n’a plus qu’une seule solution pour mettre rapidement sa famille à l’abri du besoin : fabriquer et vendre une drogue de synthèse. Commence alors une longue descente aux enfers.'),
-('Saison 1 Malcolm', 'Malcolm', 'malcolm_saison1.jpg', 'Petit génie malgré lui, Malcolm vit dans une famille hors du commun. Le jeune surdoué n\'hésite pas à se servir de son intelligence pour faire les 400 coups avec ses frères : Francis, l\'aîné, envoyé dans une école militaire après une bêtise de trop, Reese, une brute pas très maligne, et Dewey, le petit dernier, souffre douleur général. Les parents tentent tant bien que mal de canaliser l\'énergie de ces petits démons. Si Loïs est despotique et veut tout contrôler, Hal, en revanche, est irresponsable et ne pense qu\'à s\'amuser.');
+INSERT INTO `saison` (`titre`, `titre_serie`, `affiche`, `descr`, `num_saison`) VALUES
+('Saison 1 Breaking Bad', 'Breaking Bad', 'breaking_bad_saison1.jpg', 'Walter White, 50 ans, est professeur de chimie dans un lycée du Nouveau-Mexique. Son quotidien est bouleversé lorsqu’il apprend qu’il est atteint d’un cancer des poumons incurable. Il n’a plus qu’une seule solution pour mettre rapidement sa famille à l’abri du besoin : fabriquer et vendre une drogue de synthèse. Commence alors une longue descente aux enfers.', 1),
+('Saison 1 Cyberpunk Edgerunners', 'Cyberpunk: Edgerunners', 'cyberpunk_edgerunners.jpg', 'Elle raconte une histoire indépendante sur 10 épisodes à propos d’un enfant des rues essayant de survivre dans une ville du futur obsédée par la technologie et les modifications corporelles. Ayant tout à perdre, il choisit de rester en vie en devenant un edgerunner - un hors-la-loi mercenaire également connu comme un cyberpunk.', 1),
+('Saison 1 Malcolm', 'Malcolm', 'malcolm_saison1.jpg', 'Petit génie malgré lui, Malcolm vit dans une famille hors du commun. Le jeune surdoué n\'hésite pas à se servir de son intelligence pour faire les 400 coups avec ses frères : Francis, l\'aîné, envoyé dans une école militaire après une bêtise de trop, Reese, une brute pas très maligne, et Dewey, le petit dernier, souffre douleur général. Les parents tentent tant bien que mal de canaliser l\'énergie de ces petits démons. Si Loïs est despotique et veut tout contrôler, Hal, en revanche, est irresponsable et ne pense qu\'à s\'amuser.', 1),
+('Saison 2 Breaking Bad', 'Breaking Bad', 'breaking_bad_saison2.jpg', 'Après les mésaventures rencontrées avec Krazy-8 et Tuco Salamanca, Walter et Jesse décident de monter leur propre affaire. Mais alors que l’empire d\'Heisenberg s’étend de plus en plus, un deal tourne mal et les ennuis commencent. Sur les conseils de Saul Goodman, son avocat véreux, Walter entre en contact avec le propriétaire d’une chaîne de restaurant qui pourrait l’aider à écouler ses stocks de drogue. Pendant ce temps, Skyler commence à avoir des doutes sur son mari tandis que Jesse sombre peu à peu dans l’héroïne.', 2);
 
 -- --------------------------------------------------------
 
@@ -218,7 +317,8 @@ CREATE TABLE `serie` (
 
 INSERT INTO `serie` (`titre`, `tag`) VALUES
 ('Breaking Bad', 'drame'),
-('Malcolm', 'humour');
+('Malcolm', 'humour'),
+('Cyberpunk: Edgerunners', 'Science-fiction');
 
 -- --------------------------------------------------------
 
@@ -237,7 +337,8 @@ CREATE TABLE `tag` (
 INSERT INTO `tag` (`nom`) VALUES
 ('action'),
 ('drame'),
-('humour');
+('humour'),
+('Science-fiction');
 
 --
 -- Index pour les tables déchargées
