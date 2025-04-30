@@ -22,10 +22,34 @@
 </head>
 <body>
 
+    <?php
+
+        session_start();
+        $admin_name="admin";
+        $admin_pwd="admin";
+        if (isset($_POST["login"]) && isset($_POST["password"])) {
+            $username = $_POST["login"];
+            $password = $_POST["password"];
+            
+            if ($username == $admin_name && $password == $admin_pwd) {
+                header('Location: ../adminpage.php');
+            }
+            else {
+                echo("<p color=red>Les identifiants sont incorrectes.</p>") ;
+            }
+            
+
+        }
+        else {
+            echo("<p color=red>Un identifiant est manquant.</p>") ;
+        }
+
+    ?>
+    
     <h1 class="titre">TV Shows</h1>
 
         <div class="center">
-            <form id="user-infos-01" style="width: 300px" action="php/login.php" method="post">
+            <form id="user-infos-01" style="width: 300px" action="" method="post">
 
                 <div class="form-group">
                     <label for="login-sans-verif">Username : </label>
