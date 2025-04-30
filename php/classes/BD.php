@@ -39,7 +39,7 @@ Class BD {
     function get_serie_tag($tag){ //renvoie les series avec le tag mis en parametre
         $this->connectBD();
         $sql = "SELECT * FROM serie WHERE serie.tag = $tag";
-        $statement = $pdo->prepare($sql);
+        $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $result = $statement->fetchAll(PDO::FETCH_CLASS, "..\classes\serie");
         return $result;
@@ -68,7 +68,7 @@ Class BD {
     function get_acteur(){
         $this->connectBD();
         $sql = "SELECT * FROM acteur";
-        $statement = $pdo->prepare($sql);
+        $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $result = $statement->fetchAll(PDO::FETCH_CLASS, "\acteur");
         return $result;
@@ -78,7 +78,7 @@ Class BD {
     function get_reals(){
         $this->connectBD();
         $sql = "SELECT * FROM realisateur";
-        $statement = $pdo->prepare($sql);
+        $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $result = $statement->fetchAll(PDO::FETCH_CLASS, "..\classes\real");
         return $result;
@@ -87,9 +87,9 @@ Class BD {
     function get_tags(){
         $this->connectBD();
         $sql = "SELECT * FROM tag";
-        $statement = $pdo->prepare($sql);
+        $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
-        $result = $statement->fetchAll(PDO::FETCH_CLASS, "..\classes\tag");
+        $result = $statement->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
 
@@ -98,7 +98,7 @@ Class BD {
         $sql = "SELECT episode.titre, episode.desc, episode.duree, episode.id_episode
         FROM episode INNER JOIN realise INNER JOIN realisateur WHERE realise.nom_real = realisateur.nom 
         AND realise.id_episode = episode.id_Episode;";
-        $statement = $pdo->prepare($sql);
+        $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $result = $statement->fetchAll(PDO::FETCH_CLASS, "..\classes\episode");
         return $result;
