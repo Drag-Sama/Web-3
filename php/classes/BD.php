@@ -1,10 +1,13 @@
 <?php
+require "serie.php";
 Class BD {
     private string $db_name = "";
     private string $db_host = "";
     private string $db_port = "" ;
     private string $db_user = "";
     private string $db_pwd = "";
+    private PDO $pdo;
+    private string $dsn = "";
 
     public function __construct() {
         $this->db_name = "tvshow";
@@ -12,26 +15,28 @@ Class BD {
         $this->db_port = "3306";
         $this->db_user = "root";
         $this->db_pwd = "";
+        
     }
-    public function connectBD(): void{
+    public function connectBD(){
         try {
-            $dsn = "mysql:dbname=" . $this->db_name . ";host=" . $this->db_host . ";port=" . $this->db_port;
-            $pdo = new PDO($dsn,$this->db_user,$this->db_pwd);
+            $this->dsn = "mysql:dbname=" . $this->db_name . ";host=" . $this->db_host . ";port=" . $this->db_port;
+            $this->pdo =new PDO($this->dsn,$this->db_user,$this->db_pwd);
+            
         } catch (\Exception $ex) {
             die("Erreur : " . $ex->getMessage());
         }
     }
 
-     public function get_series(): serie{ //renvoie toutes les series
+     public function get_series(){ //renvoie toutes les series
         $this->connectBD();
         $sql = "SELECT * FROM serie";
-        $statement = $pdo->prepare($sql);
+        $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
-        $result = $statement->fetchAll(PDO::FETCH_CLASS, "..\classes\serie");
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, "\serie");
         return $result;
     }
 
-    function get_serie_tag($tag): serie{ //renvoie les series avec le tag mis en parametre
+    function get_serie_tag($tag){ //renvoie les series avec le tag mis en parametre
         $this->connectBD();
         $sql = "SELECT * FROM serie WHERE serie.tag = $tag";
         $statement = $pdo->prepare($sql);
@@ -40,34 +45,38 @@ Class BD {
         return $result;
     }
 
-    function research_serie(): serie{
-        connectBD();
+    public function research_serie(){
+        $sql = "";
+        $this->connectBD();
         if (isset($_GET["text"])) {
             $text = $_GET["text"];
-            $sql = "SELECT DISTINCT serie.titre, serie.tag FROM serie INNER JOIN saison INNER JOIN contient INNER JOIN episode INNER JOIN realise INNER JOIN joue WHERE nom_acteur LIKE '%" . $text . "%' OR serie.titre LIKE '%" . $text . "%' OR nom_real LIKE '%" . $text . "%'
-            OR tag LIKE '%" . $text . "%';" ; // renvoie toutes les séries où le texte recherché se trouve dans le titre de la série / le nom d'un acteur ou réalisateur / nom d'un tag.
+            $sql = "SELECT DISTINCT serie.titre, serie.tag, saison.affiche FROM serie INNER JOIN saison INNER JOIN 
+            contient INNER JOIN episode INNER JOIN realise INNER JOIN joue WHERE (nom_acteur LIKE '% . $text . %' 
+            OR serie.titre LIKE '% . $text . %' OR nom_real LIKE '% . $text . %' OR tag LIKE '% . $text . %') AND
+             saison.num_saison = 1 AND saison.titre_serie = serie.titre;" ; // renvoie toutes les séries où le texte recherché se trouve dans le titre de la série / le nom d'un acteur ou réalisateur / nom d'un tag.
         }
         else {
-            $sql = "SELECT DISTINCT serie.titre, affiche FROM saison INNER JOIN serie WHERE saison.num_saison = 1 AND saison.titre_serie = serie.titre;";
+            $sql = "SELECT DISTINCT serie.titre, serie.tag, saison.affiche FROM serie INNER JOIN saison WHERE
+             saison.titre_serie = serie.titre AND saison.num_saison = 1;";
         }
-        $statement = $pdo->prepare($sql);
+        $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
-        $results = $statement->fetchAll(PDO::FETCH_CLASS, "..\classes\serie"); 
-        return $result;
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "\serie"); 
+        return $results;
     }
 
-    function get_acteur(): acteur{
-        connectBD();
+    function get_acteur(){
+        $this->connectBD();
         $sql = "SELECT * FROM acteur";
         $statement = $pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
-        $result = $statement->fetchAll(PDO::FETCH_CLASS, "..\classes\acteur");
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, "\acteur");
         return $result;
     }
 
 
-    function get_reals(): real{
-        connectBD();
+    function get_reals(){
+        $this->connectBD();
         $sql = "SELECT * FROM realisateur";
         $statement = $pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
@@ -75,8 +84,8 @@ Class BD {
         return $result;
     }
 
-    function get_tags(): tag{
-        connectBD();
+    function get_tags(){
+        $this->connectBD();
         $sql = "SELECT * FROM tag";
         $statement = $pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
@@ -84,8 +93,8 @@ Class BD {
         return $result;
     }
 
-    function get_episode(): episode{
-        connectBD();
+    function get_episode(){
+        $this->connectBD();
         $sql = "SELECT episode.titre, episode.desc, episode.duree, episode.id_episode
         FROM episode INNER JOIN realise INNER JOIN realisateur WHERE realise.nom_real = realisateur.nom 
         AND realise.id_episode = episode.id_Episode;";

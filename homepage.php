@@ -2,9 +2,8 @@
 
 <?php require "php/classes/template.php";
 require "php/classes/BD.php";
-require "php/researchSerie.php";
-require "php/classes/BD.php";
-$BD = new $BD();
+require "php/displayResearch.php";
+$BD = new BD();
 ob_start();
 
 ?>
@@ -25,5 +24,4 @@ ob_start();
 $content = ob_get_clean();
 Template::render($content);
 
-echo $BD->get_series();
 ?>

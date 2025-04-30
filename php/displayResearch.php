@@ -2,7 +2,7 @@
 
  function displayResearch(BD $BD) : void {
     
-    $results = $BD->researchSerie();
+    $results = $BD->research_serie();
     foreach ($results as $serie):
         echo(
             "
