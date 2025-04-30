@@ -1,8 +1,8 @@
 <?php
 
- function researchSerie() : void {
-   
-
+ function displayResearch(BD $BD) : void {
+    
+    $results = $BD->researchSerie();
     foreach ($results as $serie):
         echo(
             "

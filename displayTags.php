@@ -1,6 +1,7 @@
 <?php 
 function displayTags(): void {
     $BD = new BD();
-    $tags = BD->;
+    $tags = $BD->get_tags();
+    foreach ()
 }
 ?>

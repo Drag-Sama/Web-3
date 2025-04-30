@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 
-<?php require "php/classes/template.php";
-require "php/researchSerie.php";
+<?php 
+require "php/classes/template.php";
+require "php/displayResearch.php";
 require "php/classes/BD.php";
+$BD = new BD();
+$BD->connectBD();
+displayResearch($BD);
 ob_start();
 
 ?>
     <form action="/choiceTag.php">
         <label for="tag">Tags :</label>
         <select name="tag">
-
+        <?php displayTags(); ?>
         </select>
     </form>
     <script src="filterTags.js"></script>
