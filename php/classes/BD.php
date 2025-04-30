@@ -7,25 +7,23 @@ Class BD {
     private string $db_pwd = "";
 
     public function __construct() {
-        $db_name = "tvshow";
-        $db_host = "127.0.0.1";
-        $db_port = "3306";
-        $db_user = "root";
-        $db_pwd = "";
+        $this->db_name = "tvshow";
+        $this->db_host = "127.0.0.1";
+        $this->db_port = "3306";
+        $this->db_user = "root";
+        $this->db_pwd = "";
     }
-    function connectBD(): void{
-       
-
+    public function connectBD(): void{
         try {
-            $dsn = "mysql:dbname=" . $db_name . ";host=" . $db_host . ";port=" . $db_port;
-            $pdo = new PDO($dsn,$db_user,$db_pwd);
+            $dsn = "mysql:dbname=" . $this->db_name . ";host=" . $this->db_host . ";port=" . $this->db_port;
+            $pdo = new PDO($dsn,$this->db_user,$this->db_pwd);
         } catch (\Exception $ex) {
             die("Erreur : " . $ex->getMessage());
         }
     }
 
      public function get_series(): serie{ //renvoie toutes les series
-        connectBD();
+        $this->connectBD();
         $sql = "SELECT * FROM serie";
         $statement = $pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
@@ -34,7 +32,7 @@ Class BD {
     }
 
     function get_serie_tag($tag): serie{ //renvoie les series avec le tag mis en parametre
-        connectBD();
+        $this->connectBD();
         $sql = "SELECT * FROM serie WHERE serie.tag = $tag";
         $statement = $pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
