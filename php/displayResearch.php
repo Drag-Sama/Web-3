@@ -10,9 +10,10 @@
             <div class='carte'>
                 <img class ='carte-images' src='/web3/Web-3/photos/saison/$serie->affiche'>
                 <p>$serie->titre</p>
-                
+                </a>
+                <p class = 'tag'>$serie->tag</p>
             </div>
-            </a>
+            
             "
         );
     endforeach;
