@@ -14,4 +14,6 @@ ob_start();
 <?php 
 $content = ob_get_clean();
 Template::render($content);
+
+echo get_series();
 ?>
