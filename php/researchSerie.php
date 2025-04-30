@@ -8,7 +8,7 @@
         OR tag LIKE '%" . $text . "%';" ; // renvoie toutes les séries où le texte recherché se trouve dans le titre de la série / le nom d'un acteur ou réalisateur / nom d'un tag.
     }
     else {
-        $sql = "SELECT DISTINCT serie.titre,affiche FROM serie INNER JOIN saison INNER JOIN contient INNER JOIN episode INNER JOIN realise INNER JOIN joue";
+        $sql = "SELECT DISTINCT serie.titre, affiche FROM saison INNER JOIN serie WHERE saison.num_saison = 1 AND saison.titre_serie = serie.titre;";
     }
     $statement = $pdo->prepare($sql);
     $statement->execute() or die(var_dump($statement->errorInfo()));
