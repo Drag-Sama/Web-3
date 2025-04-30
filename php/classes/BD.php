@@ -15,8 +15,6 @@ Class BD {
         $db_pwd = "";
     }
     function connectBD(): void{
-       
-
         try {
             $dsn = "mysql:dbname=" . $db_name . ";host=" . $db_host . ";port=" . $db_port;
             $pdo = new PDO($dsn,$db_user,$db_pwd);
