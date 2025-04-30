@@ -89,7 +89,7 @@ Class BD {
         $sql = "SELECT * FROM tag";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
-        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+        $result = $statement->fetchAll(PDO::FETCH_COLUMN);
         return $result;
     }
 
