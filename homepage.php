@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 
-<?php require_once "php/classes/template.php";
-require_once "php/classes/BD.php";
-require_once "php/researchSerie.php";
+<?php require "php/classes/template.php";
+require "php/classes/BD.php";
+require "php/researchSerie.php";
+require "php/classes/BD.php";
+$BD = new $BD();
 ob_start();
 
 ?>
@@ -11,10 +13,11 @@ ob_start();
         <select name="tag">
 
         </select>
+        <input type ="submit" value ="Submit">
     </form>
     <script src="filterTags.js"></script>
     <div class="cartes">
-    <?php researchSerie(); ?>
+    <?php displayResearch($BD); ?>
     </div>
     
 
@@ -22,6 +25,5 @@ ob_start();
 $content = ob_get_clean();
 Template::render($content);
 
-$bda = new BD();
-echo $bda->get_series();
+echo $BD->get_series();
 ?>
