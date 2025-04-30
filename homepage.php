@@ -2,8 +2,8 @@
 
 <?php require "php/classes/template.php";
 require "php/classes/BD.php";
-require "php/researchSerie.php";
-require "php/classes/BD.php";
+require "php/displayResearch.php";
+
 $BD = new $BD();
 ob_start();
 
