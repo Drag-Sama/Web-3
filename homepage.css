@@ -1,0 +1,48 @@
+.titre {
+    text-align:center;
+    background-color:red;
+    margin-top:30px;
+}
+.cartes{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:40px;
+}
+.carte{
+    width:250px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    overflow:hidden;
+    background:#fff;
+    text-align:center;
+}
+.carte-images{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+.carte-body{
+    padding:15px;
+    
+}
+.carte-titre{
+    font-size:1.3em;
+    margin-bottom:10px;
+}
+.episodes{
+    color:#6c757d;
+}
+.sources{
+    text-align:center;
+    margin:40px 0 10px 0;
+    color:#888;
+}
+
+.center{
+    display:flex;
+    flex-direction:column;       
+    justify-content:center;
+    align-items:center; 
+}
