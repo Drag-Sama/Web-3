@@ -7,7 +7,7 @@ function displaySelectSaisons(BD $BD) {
         foreach ($saisons as $saison):
             echo "<option value='Saison $saison->num_saison'>Saison $saison->num_saison</option>";
         endforeach;
-        echo "<\select>";
+        echo "</select>";
     }
 }
 
