@@ -65,10 +65,9 @@
 
 .titre{
     text-align:center;
-     background-color:black;
      margin-top:30px;
      font-size:3em;
-     color:darkviolet;
+     color:white;
     text-decoration: none;
 }
 
@@ -77,12 +76,13 @@
     align-items:center;
     justify-content:space-between;
     padding:24px;
-    background: black;
+    background: #2d2251;
  }
 
 .recherche{
     display:flex;
     align-items:center;
+    
 }
 
 .search-input{
@@ -92,9 +92,10 @@
     background:#fff;
     color:#222;
     border-color: #222;
+    border-radius: 15px;
 }
 
 body{
-    background-color:red;
+    background-color:#15112a;
 }
 
