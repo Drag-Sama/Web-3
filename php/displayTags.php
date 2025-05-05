@@ -2,9 +2,8 @@
 
 function displayTags(BD $BD){
     $tags = $BD->get_tags();
-    echo "<option value=''></option>";
     foreach ($tags as $tag): 
-        echo "<option value='$tag'>$tag</option>";
+        echo "<input type='checkbox' id='$tag' name='tags_check' value='$tag' onclick=\"filter()\">$tag</input>";
     endforeach;
 }
 ?>

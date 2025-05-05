@@ -7,15 +7,8 @@ require "php/displayTags.php";
 $BD = new BD();
 ob_start();
 ?>
-
 <script src="filterTags.js"></script>
-<form onsubmit="filter(tag)">
-    <label for="tag">Tags :</label>
-    <select name="tag">
-        <?php displayTags($BD); ?>
-    </select>
-    <input type ="submit" value ="Submit">
-</form>
+<?php displayTags($BD); ?>
 <div class="cartes">
 <?php displayResearch($BD); ?>
 </div>
