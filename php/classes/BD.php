@@ -110,7 +110,7 @@ Class BD {
     function get_real_episode($id_episode){
         $this->connectBD();
         $sql = "SELECT realisateur.nom, realisateur.photo FROM realisateur INNER JOIN realise ON realise.nom_real = realisateur.nom 
-        WHERE realise.id_episode = '". $id_episode ."';";
+        WHERE realise.id_episode = $id_episode;";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $result = $statement->fetchAll(PDO::FETCH_CLASS, "\\real");

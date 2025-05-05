@@ -16,9 +16,9 @@ class Display {
                 echo "<div class='episode-title' > $episode->num_episode.$episode->titre </div>";
                 echo"<div class='episode-duration'>$episode->duree min</div>";
                 echo "<div class='episode-description'> $episode->desc </div>";
-                var_dump($reals);
                 foreach($reals as $real) {
-                    echo "<img url='photos/real/$real->photo/>";
+                    echo "<img class = 'img-real' src='/web3/Web-3/photos/real/$real->photo'>";
+                    echo "<a>$real->nom</a>";
                 }
                 echo"</div>";
             endforeach;
