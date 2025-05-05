@@ -31,16 +31,13 @@ ob_start();
         
     </div>
     <div class="saison-section">
-        <div class="saison-title"> 
-            <?php 
-            echo $saison->titre;
+    <?php 
+            displaySelectSaisons($BD);
             ?>
-        </div>
-        <div class="saison-description"> 
-        <?php 
-            echo $saison->descr;
-            ?>
-        </div>
+        
+        <?php
+        displaySaisons($BD); ?>
+        
     </div>
 </div>
 
@@ -78,9 +75,7 @@ ob_start();
         </div>
 
         <div class="saison-section">
-            <?php 
-            displaySelectSaisons($BD);
-            ?>
+            
             <div class="saison-title">Saison1</div>
             <div class="saison-description">
                 Description de la saison.
@@ -102,7 +97,6 @@ ob_start();
             </div>
         </div>
     </div>
-    <footer class="sources">Source: tkt</footer>
 </body>
 </html>
 
