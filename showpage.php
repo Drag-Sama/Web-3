@@ -35,13 +35,8 @@ ob_start();
             displaySelectSaisons($BD);
             ?>
         <div class = "saison-container">
-        <?php 
-        $saisons = $BD->get_saison_serie($titre);
-            foreach ($saisons as $saison):
-                echo"<div class='saison-title'>$saison->titre</div>";
-                echo "<div class='saison-description'> $saison->descr </div>";
-            endforeach;
-            ?>
+        <?php
+        displaySaisons($BD); ?>
         </div>
         
     </div>
