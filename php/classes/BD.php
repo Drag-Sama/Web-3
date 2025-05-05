@@ -98,7 +98,7 @@ Class BD {
     
     function get_episode($titre){
         $this->connectBD();
-        $sql = "SELECT episode.titre,episode.desc, episode.duree, episode.num_episode, saison.num_saison
+        $sql = "SELECT episode.titre,episode.desc, episode.duree, episode.num_episode, saison.num_saison, episode.id_Episode
         FROM episode INNER JOIN contient ON contient.id_episode = episode.id_Episode INNER JOIN saison ON 
         saison.titre = contient.titre_saison WHERE saison.titre_serie = '". $titre ."'";
         $statement = $this->pdo->prepare($sql);
@@ -113,7 +113,7 @@ Class BD {
         WHERE realise.id_episode = '". $id_episode ."';";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
-        $result = $statement->fetchAll(PDO::FETCH_CLASS, "..\classes\\real");
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, "\\real");
         return $result;
     }
 

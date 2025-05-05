@@ -11,10 +11,15 @@ class Display {
             $titre = $_GET['serie'];
             $episodes = $this->BD->get_episode($titre);
             foreach ($episodes as $episode):
+                $reals = $this->BD->get_real_episode($episode->id_Episode);
                 echo"<div class = 'episode-row $episode->num_saison'>";
                 echo "<div class='episode-title' > $episode->num_episode.$episode->titre </div>";
                 echo"<div class='episode-duration'>$episode->duree min</div>";
                 echo "<div class='episode-description'> $episode->desc </div>";
+                var_dump($reals);
+                foreach($reals as $real) {
+                    echo "<img url='photos/real/$real->photo/>";
+                }
                 echo"</div>";
             endforeach;
         }
