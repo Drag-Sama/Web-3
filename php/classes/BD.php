@@ -107,11 +107,11 @@ Class BD {
 
     function get_tag_serie($titre){ //renvoie le tag de la serie dont le titre est mis en paramètre
         $this->connectBD();
-        $sql = "SELECT serie.tag FROM serie WHERE serie.titre = '. $titre .'";
+        $sql = "SELECT serie.tag FROM serie WHERE serie.titre = '". $titre ."'";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $result[0];
+        return $result[0]["tag"];
     }
 
     function get_saison_serie($titre){ //renvoie les saisons de la serie dont le titre est mis en paramètre
