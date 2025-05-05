@@ -7,6 +7,17 @@ function saisonsHiderDefault() { // affiche la première saison par défaut.
         else container.style.display = "block";
         i++;
     }
+
+    episodeContainer = document.getElementsByClassName("episode-row");
+    episodeSaisonContainer = document.getElementsByClassName(1);
+    for (const container of episodeContainer) {
+        
+        container.style.display = "none";
+    }
+
+    for(const container of episodeSaisonContainer){
+        container.style.display = "block";
+    }
 }
 
 function saisonsHider() {
@@ -21,5 +32,15 @@ function saisonsHider() {
         i++;
     }
     //////// PARTIE EPISODES
-    
+    episodeContainer = document.getElementsByClassName("episode-row");
+    episodeSaisonContainer = document.getElementsByClassName(n_saison);
+    for (const container of episodeContainer) {
+        
+        container.style.display = "none";
+    }
+
+    for(const container of episodeSaisonContainer){
+        container.style.display = "block";
+    }
+
 }
