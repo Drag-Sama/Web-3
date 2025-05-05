@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<?php require "php/classes/template.php";
+<?php /*require "php/classes/template.php";
 require "php/classes/BD.php";
 require "php/displayResearch.php";
-require "php/displayTags.php";
+require "php/displayTags.php";*/
 $BD = new BD();
 ob_start();
 ?>
