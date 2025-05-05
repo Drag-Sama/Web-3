@@ -34,10 +34,9 @@ ob_start();
     <?php 
             displaySelectSaisons($BD);
             ?>
-        <div class = "saison-container">
+        
         <?php
         displaySaisons($BD); ?>
-        </div>
         
     </div>
 </div>
@@ -98,7 +97,6 @@ ob_start();
             </div>
         </div>
     </div>
-    <footer class="sources">Source: tkt</footer>
 </body>
 </html>
 
