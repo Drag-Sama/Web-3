@@ -31,6 +31,9 @@ ob_start();
         
     </div>
     <div class="saison-section">
+    <?php 
+            displaySelectSaisons($BD);
+            ?>
         <div class = "saison-container">
         <?php 
         $saisons = $BD->get_saison_serie($titre);
@@ -78,9 +81,7 @@ ob_start();
         </div>
 
         <div class="saison-section">
-            <?php 
-            displaySelectSaisons($BD);
-            ?>
+            
             <div class="saison-title">Saison1</div>
             <div class="saison-description">
                 Description de la saison.
