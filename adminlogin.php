@@ -1,5 +1,5 @@
 <?php
-require "php/classes/template.php";
+require_once "autoload.php";
 ob_start();
 session_start();
 $admin_name="admin";
