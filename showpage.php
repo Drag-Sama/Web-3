@@ -36,6 +36,7 @@ ob_start();
         displaySaisons($BD); ?>
         
     </div>
+    <script>saisonsHiderDefault();</script>
 </div>
 
 <html lang="fr">
