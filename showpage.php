@@ -79,8 +79,7 @@ ob_start();
 
         <div class="saison-section">
             <?php 
-            echo "pubg";
-            displaySaisons($BD);
+            displaySelectSaisons($BD);
             ?>
             <div class="saison-title">Saison1</div>
             <div class="saison-description">
