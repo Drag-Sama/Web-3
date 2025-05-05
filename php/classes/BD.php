@@ -51,9 +51,10 @@ Class BD {
         $this->connectBD();
         if (isset($_GET["text"])) {
             $text = $_GET["text"];
-            $sql = "SELECT DISTINCT serie.titre, serie.tag, saison.affiche FROM serie INNER JOIN saison INNER JOIN 
-            contient INNER JOIN episode INNER JOIN realise INNER JOIN joue WHERE (nom_acteur LIKE '%$text%' 
-            OR serie.titre LIKE '%$text%' OR nom_real LIKE '%$text%' OR tag LIKE '%$text%') AND
+            $sql = "SELECT DISTINCT serie.titre, serie.tag, saison.affiche FROM serie INNER JOIN saison ON saison.titre_serie = serie.titre 				INNER JOIN 
+            contient ON contient.titre_saison = saison.titre INNER JOIN  episode ON contient.id_episode = episode.id_Episode  INNER JOIN 
+            realise ON realise.id_episode = episode.id_Episode INNER JOIN joue ON joue.titre_saison = saison.titre WHERE (joue.nom_acteur LIKE '%$text%' 
+            OR serie.titre LIKE '%$text%' OR realise.nom_real LIKE '%$text%' OR tag LIKE '%$text%') AND
              saison.num_saison = 1 AND saison.titre_serie = serie.titre;" ; // renvoie toutes les séries où le texte recherché se trouve dans le titre de la série / le nom d'un acteur ou réalisateur / nom d'un tag.
         }
         else {
@@ -116,10 +117,10 @@ Class BD {
 
     function get_saison_serie($titre){ //renvoie les saisons de la serie dont le titre est mis en paramètre
         $this->connectBD();
-        $sql = "SELECT * FROM saison WHERE saison.titre_serie = '. $titre .'";
+        $sql = "SELECT * FROM saison WHERE saison.titre_serie = '". $titre ."'";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
-        $result = $statement->fetchAll(PDO::FETCH_CLASS, "..\classes\saison");
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, "\saison");
         return $result;
     }
 
