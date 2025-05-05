@@ -2,6 +2,7 @@
 <?php require "php/classes/template.php";
 require "php/classes/BD.php";
 require "php/classes/saison.php";
+require "php/displaySaisons.php";
 $BD = new BD();
 ob_start();
 ?>
@@ -77,6 +78,10 @@ ob_start();
         </div>
 
         <div class="saison-section">
+            <?php 
+            echo "pubg";
+            displaySaisons($BD);
+            ?>
             <div class="saison-title">Saison1</div>
             <div class="saison-description">
                 Description de la saison.

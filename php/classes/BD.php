@@ -93,7 +93,7 @@ Class BD {
         $result = $statement->fetchAll(PDO::FETCH_COLUMN);
         return $result;
     }
-
+    
     function get_episode(){
         $this->connectBD();
         $sql = "SELECT episode.titre, episode.desc, episode.duree, episode.id_episode

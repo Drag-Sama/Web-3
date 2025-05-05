@@ -8,7 +8,9 @@ $BD = new BD();
 ob_start();
 ?>
 <script src="filterTags.js"></script>
-<?php displayTags($BD); ?>
+<div class="tags">
+    <?php displayTags($BD); ?>
+</div>
 <div class="cartes">
 <?php displayResearch($BD); ?>
 </div>
