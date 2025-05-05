@@ -2,9 +2,10 @@
 <?php require "php/classes/template.php";
 require "php/classes/BD.php";
 require "php/classes/saison.php";
-require "php/displaySaisons.php";
-require "php/displayEpisodes.php";
+require "php/classes/display.php";
+//require_once "autoload.php";
 $BD = new BD();
+$displayer = new Display($BD);
 ob_start();
 ?>
 
@@ -30,13 +31,13 @@ ob_start();
     <script src="saisonsHider.js"></script>
     <div class="saison-section">
     <?php 
-            displaySelectSaisons($BD);
+            $displayer->displaySelectSaisons();
             ?>
         
         <?php
-        displaySaisons($BD); ?>
+        $displayer->displaySaisons(); ?>
         <div class="episodes-list"> 
-           <?php displayEpisodes($BD); ?>
+           <?php $displayer->displayEpisodes(); ?>
         </div>
     </div>
     <script>saisonsHiderDefault();</script>
@@ -64,8 +65,6 @@ ob_start();
     crossorigin="anonymous"></script>
 </head>
 <body>
-
-
 
     <div class="container">
         

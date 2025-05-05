@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 
-<?php /*require "php/classes/template.php";
-require "php/classes/BD.php";
-require "php/displayResearch.php";
-require "php/displayTags.php";*/
+<?php
+require_once "autoload.php";
 $BD = new BD();
 ob_start();
+$displayer = new Display($BD);
 ?>
 <script src="filterTags.js"></script>
 <div class="tags">
-    <?php displayTags($BD); ?>
+    <?php $displayer->displayTags(); ?>
 </div>
 <div class="cartes">
-<?php displayResearch($BD); ?>
+<?php $displayer->displayResearch(); ?>
 </div>
 
 <?php 
