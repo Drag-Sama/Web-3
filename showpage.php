@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<?php require "php/classes/template.php";
-require "php/classes/BD.php";
-require "php/classes/saison.php";
-require "php/classes/display.php";
-//require_once "autoload.php";
+<?php
+require_once "autoload.php";
 $BD = new BD();
 $displayer = new Display($BD);
 ob_start();
@@ -73,12 +70,7 @@ ob_start();
             
             
             <div class="episodes-list">
-                <div class="episode-row">
-                    <div class="episode-title">Episode 1:Le Debut</div>
-                    <div class="episode-duration">42 minute</div>
-                    <div class="episode-director">Réalisateur:Jean</div>
-                    <img class="director-photo" src="">
-                </div>
+            
                
             </div>
             <div class="actors-section">
