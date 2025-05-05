@@ -1,4 +1,48 @@
 <!DOCTYPE html>
+<?php require "php/classes/template.php";
+require "php/classes/BD.php";
+require "php/classes/saison.php";
+$BD = new BD();
+ob_start();
+?>
+
+<div class="container">
+    <div class="serie-header">
+        <div class="serie-info">
+            <div class="serie-title">
+            <?php 
+            $titre = $_GET["serie"];
+            echo $titre;
+            ?>
+            </div>
+            <div class ="serie-tag">
+            <?php 
+            $tag = $BD->get_tag_serie($titre);
+            echo $tag;
+            ?>
+            </div>
+        </div>
+        <?php 
+        $saison = new Saison();
+        $saison = $BD->get_first_saison_serie($titre);
+        echo "<img class='saison-image' src='/web3/Web-3/photos/saison/$saison->affiche'"
+        ?>
+        
+    </div>
+    <div class="saison-section">
+        <div class="saison-title"> 
+            <?php 
+            echo $saison->titre;
+            ?>
+        </div>
+        <div class="saison-description"> 
+        <?php 
+            echo $saison->descr;
+            ?>
+        </div>
+    </div>
+</div>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -22,19 +66,11 @@
 </head>
 <body>
 
-    <header class="header-titre">
-        
-        <div class="titre">Tv Show</div>
-        <form class="recherche" action="homepage.php?text=$_GET['text']" method="get">
-            <input type="text" name="text" class="search-input" placeholder="Rechercher une serie..">
-            <button type="submit" class="btn btn-primary">Click</button>
-        </form>
-    </header>
+
 
     <div class="container">
         <div class="serie-header">
             <div class="serie-info">
-                <div class="serie-title">Nom de la serie</div>
                 <div class="serie-tag">Drame</div>
             </div>
             <img class="saison-image" src="">
@@ -65,3 +101,15 @@
     <footer class="sources">Source: tkt</footer>
 </body>
 </html>
+
+<?php 
+$serie = $_GET["serie"];
+    
+?>
+
+
+
+<?php 
+$content = ob_get_clean();
+Template::render($content);
+?>

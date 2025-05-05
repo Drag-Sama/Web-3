@@ -45,6 +45,7 @@ Class BD {
         return $result;
     }
 
+
     public function research_serie(){
         $sql = "";
         $this->connectBD();
@@ -103,6 +104,33 @@ Class BD {
         $result = $statement->fetchAll(PDO::FETCH_CLASS, "..\classes\episode");
         return $result;
     }
-    
+
+    function get_tag_serie($titre){ //renvoie le tag de la serie dont le titre est mis en paramètre
+        $this->connectBD();
+        $sql = "SELECT serie.tag FROM serie WHERE serie.titre = '. $titre .'";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute() or die(var_dump($statement->errorInfo()));
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result[0];
+    }
+
+    function get_saison_serie($titre){ //renvoie les saisons de la serie dont le titre est mis en paramètre
+        $this->connectBD();
+        $sql = "SELECT * FROM saison WHERE saison.titre_serie = '. $titre .'";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute() or die(var_dump($statement->errorInfo()));
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, "..\classes\saison");
+        return $result;
+    }
+
+    function get_first_saison_serie($titre){ //renvoie la premiere saison de la serie dont le titre est mis en paramètre
+        $this->connectBD();
+        $sql = "SELECT * FROM saison WHERE saison.titre_serie = '". $titre ."' AND saison.num_saison = 1";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute() or die(var_dump($statement->errorInfo()));
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, "\saison");
+        return $result[0];
+    }
+ 
 }
 ?>

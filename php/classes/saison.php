@@ -1,18 +1,13 @@
 <?php
 class Saison {
-    private string $titre;
-    private int $num;
-    private string $affiche;
-    private array $episodes;
-    private array $acteurs;
+    public string $titre;
+    public string $titre_serie;
+    public string $affiche;
+    public string $descr;
+    public int $num_saison;
+    
 
-    public function __construct($titre,$numero=1,$nom_affiche="",$episods=[],$acts=[]) {
-        $nom = $titre;
-        $num = $numero;
-        $affiche=$nom_affiche;
-        $episodes=$episods;
-        $acteurs=$acts;
-    }
+
     
     
 }
