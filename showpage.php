@@ -65,19 +65,11 @@ ob_start();
 
 
     <div class="container">
-        <div class="serie-header">
-            <div class="serie-info">
-                <div class="serie-tag">Drame</div>
-            </div>
-            <img class="saison-image" src="">
-        </div>
+        
 
         <div class="saison-section">
             
-            <div class="saison-title">Saison1</div>
-            <div class="saison-description">
-                Description de la saison.
-            </div>
+            
             <div class="episodes-list">
                 <div class="episode-row">
                     <div class="episode-title">Episode 1:Le Debut</div>
