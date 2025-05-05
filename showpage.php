@@ -23,11 +23,7 @@ ob_start();
             ?>
             </div>
         </div>
-        <?php 
-        $saison = new Saison();
-        $saison = $BD->get_first_saison_serie($titre);
-        echo "<img class='saison-image' src='/web3/Web-3/photos/saison/$saison->affiche'"
-        ?>
+        
         
     </div>
     <div class="saison-section">
