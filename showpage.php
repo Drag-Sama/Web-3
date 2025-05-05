@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php require "php/classes/template.php";
+require "php/classes/BD.php";
+$BD = new BD();
+ob_start();
+?>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -22,14 +28,7 @@
 </head>
 <body>
 
-    <header class="header-titre">
-        
-        <div class="titre">Tv Show</div>
-        <form class="recherche" action="homepage.php?text=$_GET['text']" method="get">
-            <input type="text" name="text" class="search-input" placeholder="Rechercher une serie..">
-            <button type="submit" class="btn btn-primary">Click</button>
-        </form>
-    </header>
+
 
     <div class="container">
         <div class="serie-header">
@@ -65,3 +64,8 @@
     <footer class="sources">Source: tkt</footer>
 </body>
 </html>
+
+<?php 
+$content = ob_get_clean();
+Template::render($content);
+?>
