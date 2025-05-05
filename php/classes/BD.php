@@ -68,9 +68,9 @@ Class BD {
         return $results;
     }
 
-    function get_acteur($titre){
+    function get_acteurs_titre($titre){
         $this->connectBD();
-        $sql = "SELECT acteur.nom, acteur.photo FROM `acteur` INNER JOIN joue ON joue.nom_acteur = acteur.nom INNER JOIN
+        $sql = "SELECT DISTINCT acteur.nom, acteur.photo FROM `acteur` INNER JOIN joue ON joue.nom_acteur = acteur.nom INNER JOIN
          saison ON saison.titre = joue.titre_saison WHERE saison.titre_serie = '". $titre ."';";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));

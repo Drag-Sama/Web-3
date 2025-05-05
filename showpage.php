@@ -75,6 +75,8 @@ ob_start();
             </div>
             <div class="actors-section">
                 <div class="actor">
+                    <?php $displayer->displayActeur(); ?>
+                
                     <img class="actor-photo" src="">
                     <div class="actor-name">Nom de l'acteur </div>
                 </div>

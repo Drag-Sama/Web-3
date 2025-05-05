@@ -80,5 +80,20 @@ class Display {
     public function displayButtonsAdmin() {
 
     }
+
+    public function displayActeur(){
+        if (isset($_GET['serie'])) {
+            $serie = $_GET['serie'];
+            $acteurs = $this->BD->get_acteurs_titre($serie);
+            foreach($acteurs as $acteur){
+                echo "<div class = 'acteur-container'>";
+                echo "<img src = '/web3/Web-3/photos/acteur/$acteur->photo'/>";
+                echo "<a> $acteur->nom </a>";
+                echo "</div>";
+            }
+        }
+ }
 }
+
+    
 ?>
