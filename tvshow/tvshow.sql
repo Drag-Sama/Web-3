@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 05 mai 2025 à 15:15
+-- Généré le : lun. 05 mai 2025 à 16:36
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -43,9 +43,11 @@ INSERT INTO `acteur` (`nom`, `photo`) VALUES
 ('Bryan Cranston', 'bryan_cranston.jpg'),
 ('Christopher Masterson', 'christopher_masterson.jpg'),
 ('Dorothée Pousséo', 'dorothée-pousséo.jpg'),
+('Ella Purnell ', 'ella_purnell.jpg'),
 ('Erik Per Sullivan', 'erik_per_sullivan.jpg'),
 ('Frankie Muniz', 'frankie_muniz.jpg'),
 ('Frédéric Souterelle', 'frédéric_souterelle.jpg'),
+('Hailee Steinfeld', 'hailee_steinfeld.jpg'),
 ('Jane Kaczmarek', 'jane-kaczmarek.jpg'),
 ('Justin Berfied', 'justin-berfied.jpg');
 
@@ -108,7 +110,16 @@ INSERT INTO `contient` (`titre_saison`, `id_episode`) VALUES
 ('Saison 1 Arcane', 42),
 ('Saison 1 Arcane', 43),
 ('Saison 1 Arcane', 40),
-('Saison 1 Arcane', 44);
+('Saison 1 Arcane', 44),
+('Saison 2 Arcane', 45),
+('Saison 2 Arcane', 46),
+('Saison 2 Arcane', 47),
+('Saison 2 Arcane', 48),
+('Saison 2 Arcane', 49),
+('Saison 2 Arcane', 50),
+('Saison 2 Arcane', 51),
+('Saison 2 Arcane', 52),
+('Saison 2 Arcane', 53);
 
 -- --------------------------------------------------------
 
@@ -173,7 +184,16 @@ INSERT INTO `episode` (`titre`, `desc`, `duree`, `num_episode`, `id_Episode`) VA
 ('Quand l\'empire s\'effondre', 'Un protégé discrédite son mentor devant le Conseil à cause de l\'évolution rapide d\'une technologie magique. Poursuivie par les autorités, Jinx doit affronter son passé.', 40, 6, 41),
 ('Le petit sauveur', 'Caitlyn et Vi retrouvent un allié dans les rues de Zaun et se déchaînent contre une ennemie commune. Viktor prend une décision désespérée.', 40, 7, 42),
 (' L\'eau et l\'huile', 'L\'héritière désavouée Mel et sa mère échangent des tactiques de combat. Caitlyn et Vi forgent une alliance improbable. Jinx subit une étonnante transformation.', 40, 8, 43),
-('Rouages et engrenages', 'À deux doigts d\'entrer en guerre, les chefs de Piltover et de Zaun sont face à un ultimatum, jusqu\'à ce qu\'un affrontement fatidique bouleverse les deux villes à jamais.', 40, 9, 44);
+('Rouages et engrenages', 'À deux doigts d\'entrer en guerre, les chefs de Piltover et de Zaun sont face à un ultimatum, jusqu\'à ce qu\'un affrontement fatidique bouleverse les deux villes à jamais.', 40, 9, 44),
+(' Le fardeau des responsabilités', 'Vi et Caitlyn hésitent sur la meilleure attitude à adopter face à une horrible tragédie qui fait de nombreuses victimes et aggrave les tensions entre les villes jumelles.', 40, 1, 45),
+('Tout regarder brûler', 'Tandis que Piltover prône la guerre, la Basse-Ville évalue ses options. Jinx fait profil bas et imagine son prochain coup. Une conversation décisive a lieu.', 40, 2, 46),
+('Tu m\'appelles enfin par mon nom', 'Caitlyn redouble d\'efforts pour capturer Jinx. Ambessa accepte une rencontre fatidique. De grands bouleversements secouent Zaun. S\'ensuit une découverte choquante...', 40, 3, 47),
+('Peins la ville en bleu', 'Alors que les rumeurs parlent d\'un retour de Jinx, Ambessa redouble d\'ardeur dans la poursuite de sa cible. Jinx et Sevika s\'infiltrent dans le ventre de la bête.', 40, 4, 48),
+('Creuser, malgré tout', 'Vi est réveillée par des nouvelles surprenantes. Lors de retrouvailles perturbantes, la réalité est bien différente des apparences. Caitlyn découvre les origines de Shimmer.', 40, 5, 49),
+('Le message caché dans le schéma', 'Dans un lieu méconnu, c\'est pourtant une figure bien connue qui prodigue l\'apaisement. Une trahison stupéfiante menace de bouleverser d\'innombrables vies.', 40, 6, 50),
+('Comme si c\'était la première fois', 'Un instant d\'obscurité, un autre de lumière… et une vision de ce qui aurait pu être.', 40, 7, 51),
+('Tuer est un cycle', 'La tempête qui se prépare nourrit une série de transformations saisissantes. Ailleurs, l\'étincelle de la rébellion brûle toujours.', 40, 8, 52),
+('La terre sous tes ongles', 'Magie. Science. Pouvoir. Vengeance. Dans un final épique, les destins se heurtent, déchaînant une guerre sans merci.', 40, 9, 53);
 
 -- --------------------------------------------------------
 
@@ -205,7 +225,11 @@ INSERT INTO `joue` (`titre_saison`, `nom_acteur`) VALUES
 ('Saison 2 Breaking Bad', 'Anna Gunn'),
 ('Saison 1 Cyberpunk Edgerunners', 'Alexis Tomassian'),
 ('Saison 1 Cyberpunk Edgerunners', 'Dorothée Pousséo'),
-('Saison 1 Cyberpunk Edgerunners', 'Frédéric Souterelle');
+('Saison 1 Cyberpunk Edgerunners', 'Frédéric Souterelle'),
+('Saison 1 Arcane', 'Hailee Steinfeld'),
+('Saison 1 Arcane', 'Ella Purnell '),
+('Saison 2 Arcane', 'Ella Purnell '),
+('Saison 2 Arcane', 'Hailee Steinfeld');
 
 -- --------------------------------------------------------
 
@@ -235,6 +259,7 @@ INSERT INTO `realisateur` (`nom`, `photo`) VALUES
 ('Johan Renck', 'johan_renck.jpg'),
 ('John Dahl', 'john_dahl.jpg'),
 ('Nick Marck', 'nick_marck.jpg'),
+('Pascal Charrue', 'pascal_charrue.jpg'),
 ('Peter Medak', 'peter_medak.jpg'),
 ('Terry McDonough', 'terry_mcdonough.jpg'),
 ('Tim Hunter', 'tim_hunter.jpg'),
@@ -293,7 +318,25 @@ INSERT INTO `realise` (`nom_real`, `id_episode`) VALUES
 ('Hiroyuki Imaishi', 32),
 ('Hiroyuki Imaishi', 33),
 ('Hiroyuki Imaishi', 34),
-('Hiroyuki Imaishi', 35);
+('Hiroyuki Imaishi', 35),
+('Pascal Charrue', 36),
+('Pascal Charrue', 37),
+('Pascal Charrue', 38),
+('Pascal Charrue', 39),
+('Pascal Charrue', 40),
+('Pascal Charrue', 41),
+('Pascal Charrue', 42),
+('Pascal Charrue', 43),
+('Pascal Charrue', 44),
+('Pascal Charrue', 45),
+('Pascal Charrue', 46),
+('Pascal Charrue', 47),
+('Pascal Charrue', 48),
+('Pascal Charrue', 49),
+('Pascal Charrue', 50),
+('Pascal Charrue', 51),
+('Pascal Charrue', 52),
+('Pascal Charrue', 53);
 
 -- --------------------------------------------------------
 
@@ -318,6 +361,7 @@ INSERT INTO `saison` (`titre`, `titre_serie`, `affiche`, `descr`, `num_saison`) 
 ('Saison 1 Breaking Bad', 'Breaking Bad', 'breaking_bad_saison1.jpg', 'Walter White, 50 ans, est professeur de chimie dans un lycée du Nouveau-Mexique. Son quotidien est bouleversé lorsqu’il apprend qu’il est atteint d’un cancer des poumons incurable. Il n’a plus qu’une seule solution pour mettre rapidement sa famille à l’abri du besoin : fabriquer et vendre une drogue de synthèse. Commence alors une longue descente aux enfers.', 1),
 ('Saison 1 Cyberpunk Edgerunners', 'Cyberpunk: Edgerunners', 'cyberpunk_edgerunners.jpg', 'Elle raconte une histoire indépendante sur 10 épisodes à propos d’un enfant des rues essayant de survivre dans une ville du futur obsédée par la technologie et les modifications corporelles. Ayant tout à perdre, il choisit de rester en vie en devenant un edgerunner - un hors-la-loi mercenaire également connu comme un cyberpunk.', 1),
 ('Saison 1 Malcolm', 'Malcolm', 'malcolm_saison1.jpg', 'Petit génie malgré lui, Malcolm vit dans une famille hors du commun. Le jeune surdoué n\'hésite pas à se servir de son intelligence pour faire les 400 coups avec ses frères : Francis, l\'aîné, envoyé dans une école militaire après une bêtise de trop, Reese, une brute pas très maligne, et Dewey, le petit dernier, souffre douleur général. Les parents tentent tant bien que mal de canaliser l\'énergie de ces petits démons. Si Loïs est despotique et veut tout contrôler, Hal, en revanche, est irresponsable et ne pense qu\'à s\'amuser.', 1),
+('Saison 2 Arcane', 'Arcane', 'arcane_saison2.jpg', 'L\'attaque de Jinx contre le Conseil ouvre la voie à une terrible escalade du conflit entre Piltover et Zaun.', 2),
 ('Saison 2 Breaking Bad', 'Breaking Bad', 'breaking_bad_saison2.jpg', 'Après les mésaventures rencontrées avec Krazy-8 et Tuco Salamanca, Walter et Jesse décident de monter leur propre affaire. Mais alors que l’empire d\'Heisenberg s’étend de plus en plus, un deal tourne mal et les ennuis commencent. Sur les conseils de Saul Goodman, son avocat véreux, Walter entre en contact avec le propriétaire d’une chaîne de restaurant qui pourrait l’aider à écouler ses stocks de drogue. Pendant ce temps, Skyler commence à avoir des doutes sur son mari tandis que Jesse sombre peu à peu dans l’héroïne.', 2);
 
 -- --------------------------------------------------------
