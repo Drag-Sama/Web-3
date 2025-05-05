@@ -52,8 +52,8 @@ Class BD {
         if (isset($_GET["text"])) {
             $text = $_GET["text"];
             $sql = "SELECT DISTINCT serie.titre, serie.tag, saison.affiche FROM serie INNER JOIN saison INNER JOIN 
-            contient INNER JOIN episode INNER JOIN realise INNER JOIN joue WHERE (nom_acteur LIKE '% . $text . %' 
-            OR serie.titre LIKE '% . $text . %' OR nom_real LIKE '% . $text . %' OR tag LIKE '% . $text . %') AND
+            contient INNER JOIN episode INNER JOIN realise INNER JOIN joue WHERE (nom_acteur LIKE '%$text%' 
+            OR serie.titre LIKE '%$text%' OR nom_real LIKE '%$text%' OR tag LIKE '%$text%') AND
              saison.num_saison = 1 AND saison.titre_serie = serie.titre;" ; // renvoie toutes les séries où le texte recherché se trouve dans le titre de la série / le nom d'un acteur ou réalisateur / nom d'un tag.
         }
         else {
