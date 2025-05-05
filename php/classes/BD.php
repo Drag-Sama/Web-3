@@ -1,5 +1,6 @@
 <?php
 require "serie.php";
+require "episode.php";
 Class BD {
     private string $db_name = "";
     private string $db_host = "";
@@ -95,14 +96,24 @@ Class BD {
         return $result;
     }
     
-    function get_episode(){
+    function get_episode($titre){
         $this->connectBD();
-        $sql = "SELECT episode.titre, episode.desc, episode.duree, episode.id_episode
-        FROM episode INNER JOIN realise INNER JOIN realisateur WHERE realise.nom_real = realisateur.nom 
-        AND realise.id_episode = episode.id_Episode;";
+        $sql = "SELECT episode.titre,episode.desc, episode.duree, episode.num_episode, saison.num_saison
+        FROM episode INNER JOIN contient ON contient.id_episode = episode.id_Episode INNER JOIN saison ON 
+        saison.titre = contient.titre_saison WHERE saison.titre_serie = '". $titre ."'";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
-        $result = $statement->fetchAll(PDO::FETCH_CLASS, "..\classes\episode");
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, "\\episode");
+        return $result;
+    }
+
+    function get_real_episode($id_episode){
+        $this->connectBD();
+        $sql = "SELECT realisateur.nom, realisateur.photo FROM realisateur INNER JOIN realise ON realise.nom_real = realisateur.nom 
+        WHERE realise.id_episode = '". $id_episode ."';";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute() or die(var_dump($statement->errorInfo()));
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, "..\classes\\real");
         return $result;
     }
 

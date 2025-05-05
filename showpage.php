@@ -3,6 +3,7 @@
 require "php/classes/BD.php";
 require "php/classes/saison.php";
 require "php/displaySaisons.php";
+require "php/displayEpisodes.php";
 $BD = new BD();
 ob_start();
 ?>
@@ -34,7 +35,9 @@ ob_start();
         
         <?php
         displaySaisons($BD); ?>
-        
+        <div class="episodes-list"> 
+           <?php displayEpisodes($BD); ?>
+        </div>
     </div>
     <script>saisonsHiderDefault();</script>
 </div>
