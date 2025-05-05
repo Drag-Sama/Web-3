@@ -102,10 +102,6 @@ ob_start();
 </body>
 </html>
 
-<?php 
-$serie = $_GET["serie"];
-    
-?>
 
 
 
