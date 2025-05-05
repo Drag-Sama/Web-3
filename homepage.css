@@ -65,7 +65,7 @@
 
 .titre{
     text-align:center;
-     background-color:white;
+     background-color:black;
      margin-top:30px;
      font-size:3em;
      color:darkviolet;
@@ -77,7 +77,7 @@
     align-items:center;
     justify-content:space-between;
     padding:24px;
-    background: white;
+    background: black;
  }
 
 .recherche{
@@ -93,3 +93,8 @@
     color:#222;
     border-color: #222;
 }
+
+body{
+    background-color:red;
+}
+
