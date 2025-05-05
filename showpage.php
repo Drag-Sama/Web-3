@@ -31,16 +31,16 @@ ob_start();
         
     </div>
     <div class="saison-section">
-        <div class="saison-title"> 
-            <?php 
-            echo $saison->titre;
-            ?>
-        </div>
-        <div class="saison-description"> 
+        <div class = "saison-container">
         <?php 
-            echo $saison->descr;
+        $saisons = $BD->get_saison_serie($titre);
+            foreach ($saisons as $saison):
+                echo"<div class='saison-title'>$saison->titre</div>";
+                echo "<div class='saison-description'> $saison->descr </div>";
+            endforeach;
             ?>
         </div>
+        
     </div>
 </div>
 
