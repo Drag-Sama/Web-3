@@ -26,6 +26,7 @@ ob_start();
         
         
     </div>
+    <script src="saisonsHider.js"></script>
     <div class="saison-section">
     <?php 
             displaySelectSaisons($BD);
