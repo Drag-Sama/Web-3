@@ -10,6 +10,7 @@ function saisonsHiderDefault() { // affiche la première saison par défaut.
 }
 
 function saisonsHider() {
+    //////// PARTIE SAISONS / DESCRIPTION
     saisonSelector = document.getElementById("saisons");
     n_saison = saisonSelector.value; // num de la saison voulue.
     saisonContainers = document.getElementsByClassName("saison-container");
@@ -19,4 +20,6 @@ function saisonsHider() {
         else container.style.display = "block";
         i++;
     }
+    //////// PARTIE EPISODES
+    
 }

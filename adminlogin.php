@@ -1,9 +1,25 @@
 <?php
 require "php/classes/template.php";
 ob_start();
+session_start();
+$admin_name="admin";
+$admin_pwd="admin";
+if (isset($_POST["login"]) && isset($_POST["password"])) {
+    $username = $_POST["login"];
+    $password = $_POST["password"];
+    
+    if ($username == $admin_name && $password == $admin_pwd) {
+        header('Location: ../Web-3/adminpage.php');
+    }
+    else {
+        echo("<p color=red>Les identifiants sont incorrectes.</p>") ;
+    }
+    
+
+}
 ?>
     <div class="center">
-        <form id="user-infos-01" style="width: 300px" action="php/login.php" method="post">
+        <form id="user-infos-01" style="width: 300px" action="adminlogin.php" method="post">
             <div class="form-group">
                 <label for="login-sans-verif">Username : </label>
                 <input type="text" class="form-control" name="login" id="login-sans-verif">
