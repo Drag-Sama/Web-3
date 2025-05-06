@@ -86,10 +86,17 @@ class Display {
             $serie = $_GET['serie'];
             $acteurs = $this->BD->get_acteurs_titre($serie);
             foreach($acteurs as $acteur){
-                echo "<div class = 'acteur-container'>";
-                echo "<img src = '/web3/Web-3/photos/acteur/$acteur->photo'/>";
-                echo "<a> $acteur->nom </a>";
-                echo "</div>";
+                echo(
+                    "
+                    <a href='homepage.php?text=".$acteur->nom."'>
+                    <div class='carte' id='$acteur->nom'>
+                        <img class ='carte-images' src='/web3/Web-3/photos/acteur/$acteur->photo'>
+                        <p>$acteur->nom</p>
+                        </a>
+                    </div>
+                    
+                    "
+                );
             }
         }
  }

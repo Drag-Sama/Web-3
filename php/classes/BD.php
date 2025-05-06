@@ -71,8 +71,8 @@ Class BD {
     public function research_acteur(){
         $sql = "";
         $this->connectBD();
-        if (isset($_GET["text"])) {
-            $text = $_GET["text"];
+        if (isset($_GET["acteur"])) {
+            $text = $_GET["acteur"];
             $sql = "SELECT DISTINCT * FROM acteur WHERE acteur.nom LIKE '%$text%' " ; // renvoie touts les acteurs dont le nom ressemble au texte
         }
         else {
