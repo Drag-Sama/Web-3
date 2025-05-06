@@ -1,18 +1,9 @@
 
 body{
-    font-family: Arial, sans-serif;
     background-color:#15112a;
     
 }
 
-.titre{
-    text-align:center;
-     margin-top:30px;
-     font-size:3em;
-     color: white;
-     text-decoration: none;
-     
-}
 .container{
     max-width: 900px;
     margin: 30px auto;
@@ -134,14 +125,7 @@ body{
      color:#888;
  }
 
- .header-titre{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:24px;
-    background: #2d2251;
-    ;
- }
+
 
 .recherche{
     display:flex;
