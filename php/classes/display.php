@@ -117,6 +117,23 @@ class Display {
             );
         endforeach;
  }
+
+ public function displayRealRecherche(){
+    $results = $this->BD->research_real();
+        foreach ($results as $real):
+            echo(
+                "
+                <a href='homepage.php?text=".$real->nom."'>
+                <div class='carte' id='$real->nom'>
+                    <img class ='carte-images' src='/web3/Web-3/photos/real/$real->photo'>
+                    <p>$real->nom</p>
+                    </a>
+                </div>
+                
+                "
+            );
+        endforeach;
+ }
 }
 
     

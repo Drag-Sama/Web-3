@@ -59,6 +59,7 @@ body{
     font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 6px;
+    color: white;
 }
 .saison-description{
     margin-bottom: 20px;
@@ -86,6 +87,10 @@ body{
 }
 .episode-director{
     min-width:80px;
+}
+
+.episode-description{
+    color:white;
 }
 
 
@@ -151,12 +156,9 @@ body{
     color:#222;
     border-color: #222;
 }
-.episode-description{
-    color:black;
-}
 .img-real{
-    width:40px;
-    height:40px;
+    width:70px;
+    height:83px;
     margin-left:8px;
     border:2px solid #2d2251;
 }

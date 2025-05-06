@@ -84,6 +84,22 @@ Class BD {
         return $results;
     }
 
+    public function research_real(){
+        $sql = "";
+        $this->connectBD();
+        if (isset($_GET["real"])) {
+            $text = $_GET["real"];
+            $sql = "SELECT DISTINCT * FROM realisateur WHERE realisateur.nom LIKE '%$text%' " ; // renvoie touts les acteurs dont le nom ressemble au texte
+        }
+        else {
+            $sql = "SELECT DISTINCT * FROM realisateur;";
+        }
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute() or die(var_dump($statement->errorInfo()));
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "\\real"); 
+        return $results;
+    }
+
     function get_acteurs_titre($titre){
         $this->connectBD();
         $sql = "SELECT DISTINCT acteur.nom, acteur.photo FROM `acteur` INNER JOIN joue ON joue.nom_acteur = acteur.nom INNER JOIN
