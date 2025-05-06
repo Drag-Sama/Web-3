@@ -1,10 +1,10 @@
 
 body{
     font-family: Arial, sans-serif;
-    background-color: #15112a;
-    margin: 0;
-    padding: 0;
+    background-color:#15112a;
+    
 }
+
 .titre{
     text-align:center;
      margin-top:30px;
@@ -35,6 +35,7 @@ body{
     font-size: 2.2em;
     font-weight: bold;
     color:  white;
+    border:5px t;
 }
 .serie-tag{
     font-size: 1.1em;
@@ -86,6 +87,7 @@ body{
 .episode-director{
     min-width:80px;
 }
+
 .director-photo{
     width:40px;
     height:40px;
@@ -148,7 +150,14 @@ body{
     border-color: #222;
 }
 .acteur-container{
-    color: white;
+    color:white;
 }
-
-
+.episode-description{
+    color:black;
+}
+.img-real{
+    width:40px;
+    height:40px;
+    margin-left:8px;
+    border:2px solid #2d2251;
+}
