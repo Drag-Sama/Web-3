@@ -93,6 +93,23 @@ class Display {
             }
         }
  }
+
+ public function displayActeurRecherche(){
+    $results = $this->BD->research_acteur();
+        foreach ($results as $acteur):
+            echo(
+                "
+                <a href='homepage.php?text=".$acteur->nom."'>
+                <div class='carte' id='$acteur->nom'>
+                    <img class ='carte-images' src='/web3/Web-3/photos/acteur/$acteur->photo'>
+                    <p>$acteur->nom</p>
+                    </a>
+                </div>
+                
+                "
+            );
+        endforeach;
+ }
 }
 
     
