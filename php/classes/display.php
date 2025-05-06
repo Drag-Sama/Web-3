@@ -81,16 +81,19 @@ class Display {
 
     }
 
+   
     public function displayActeur(){
         if (isset($_GET['serie'])) {
             $serie = $_GET['serie'];
             $acteurs = $this->BD->get_acteurs_titre($serie);
+            echo "<div class='actor-section'>";
             foreach($acteurs as $acteur){
-                echo "<div class = 'acteur-container'>";
-                echo "<img src = '/web3/Web-3/photos/acteur/$acteur->photo'/>";
-                echo "<a> $acteur->nom </a>";
+                echo "<div class='actor'>";
+                echo "<img  class='actor-photo' src = '/photos/acteur/$acteur->photo'/>";
+                echo "<div class='actor-name'> $acteur->nom </div>";
                 echo "</div>";
             }
+            echo "</div>";
         }
  }
 
