@@ -88,6 +88,7 @@ body{
     min-width:80px;
 }
 
+
 .director-photo{
     width:40px;
     height:40px;
@@ -96,7 +97,7 @@ body{
     margin-left:8px;
     border:2px solid #e0e0e0;
 }
-.actors-section{
+.actor-section{
     margin-top: 30px;
     display: flex;
     gap: 18px;
@@ -119,6 +120,7 @@ body{
 .actor-name{
     font-size:0.97em;
     text-align: center;
+    color:white;
 }
 
 .sources{
@@ -148,9 +150,6 @@ body{
     background:#fff;
     color:#222;
     border-color: #222;
-}
-.acteur-container{
-    color:white;
 }
 .episode-description{
     color:black;
