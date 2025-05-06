@@ -65,22 +65,11 @@ ob_start();
 <body>
 
     <div class="container">
-        
-
         <div class="saison-section">
-            
-            
             <div class="episodes-list">
-            
-               
             </div>
             <div class="actors-section">
-                <div class="actor">
                     <?php $displayer->displayActeur(); ?>
-                
-                    <img class="actor-photo" src="">
-                    <div class="actor-name">Nom de l'acteur </div>
-                </div>
             </div>
         </div>
     </div>
