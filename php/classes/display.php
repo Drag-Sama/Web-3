@@ -176,7 +176,7 @@ class Display {
     echo "</div>";
  }
 
- public function displayEdit() {
+ public function displayEdit() { // générer editadmin.php
     /// TAGS
     if (isset($_GET["tag"])) {
         echo "
@@ -189,31 +189,33 @@ class Display {
     }
     /// SERIES
     if (isset($_GET["serie"])) {
-        $this->BD->research_serie("serie");
+        $serie = $this->BD->research_serie("serie")[0];
         echo "
         <form action ='' method='POST'>
             <label for='titre'>Titre :</label>
             <input class='' id='titre' name='titre' value='" . urldecode($_GET["serie"]) . "'>
             <label for='tag'>Tag :</label>
-            <input class='' id='tag' name='tag'>
-            <label for='affiche'>URL Affiche :</label>
-            <input class='' id='affiche' name='affiche'>
+            <input class='' id='tag' name='tag' value='$serie->tag'>
+            <label for='affiche'>Nom du fichier de l'affiche :</label>
+            <input class='' id='affiche' name='affiche' value='$serie->affiche'>
             <button>Valider</button>
         </form>
         ";
     }
     /// ACTEURS ou REALS
     if (isset($_GET["acteur"]) || isset($_GET["real"])) {
+        if(isset($_GET["acteur"])) $personne = $this->BD->research_acteur()[0] ;
+            else $personne = $this->BD->research_real()[0];
         echo "
         <form action ='' method='POST'> 
             <label for='nom'>Nom :</label>
-            <input class='' id='nom' name='nom' value='";
+            <input class='' id='nom' name='nom' value='$personne->nom'";
             if(isset($_GET["acteur"])) echo urldecode($_GET["acteur"]);
             else echo urldecode($_GET["real"]);
 
             echo "'>
-            <label for='photo'>URL Photo :</label>
-            <input class='' id='photo' name='photo'>
+            <label for='photo'>Nom du fichier photo :</label>
+            <input class='' id='photo' name='photo' value='$personne->photo'>
             <button>Valider</button>
         </form>
         ";
