@@ -161,7 +161,7 @@ Class BD {
 
     function get_tag_serie($titre){ //renvoie le tag de la serie dont le titre est mis en paramètre
         $this->connectBD();
-        $sql = "SELECT serie.tag FROM serie WHERE serie.titre = '". $titre ."'";
+        $sql = "SELECT tag.tag FROM serie INNER JOIN tag ON tag.id_tag = serie.tag WHERE serie.titre = '". $titre ."'";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -170,7 +170,7 @@ Class BD {
 
     function get_saison_serie($titre){ //renvoie les saisons de la serie dont le titre est mis en paramètre
         $this->connectBD();
-        $sql = "SELECT * FROM saison WHERE saison.titre = '". $titre ."'";
+        $sql = "SELECT saison.titre, saison.affiche, saison.descr, saison.num_saison FROM saison INNER JOIN serie ON serie.id_serie = saison.id_serie WHERE serie.titre = '". $titre ."'";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $result = $statement->fetchAll(PDO::FETCH_CLASS, "\saison");
