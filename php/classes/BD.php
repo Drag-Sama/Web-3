@@ -41,9 +41,9 @@ Class BD {
     }
 
 
-    public function research_serie(){
-        if (isset($_GET["text"])) {
-            $text = $_GET["text"];
+    public function research_serie($search){
+        if (isset($_GET[$search])) {
+            $text = $_GET[$search];
             return $this->research_serie_text($text);
         }
         else {
@@ -51,6 +51,8 @@ Class BD {
         }
         
     }
+
+
 
     public function get_series(){ //renvoie toutes les series
         $this->connectBD();
@@ -199,7 +201,17 @@ Class BD {
     }
 
     function applyEditTag(){
-
+        $this->connectBD();
+        if (isset($_POST["tag"])){
+            $nvtag =  $_POST["tag"];
+            $tag = $_GET["tag"];
+            $sql = "UPDATE `tag` SET `tag`= '$nvtag',`id_tag`=tag.id_tag WHERE tag.tag = '$tag'";
+            var_dump($tag);
+            var_dump($nvtag);
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute() or die(var_dump($statement->errorInfo()));
+            $_GET["tag"] = $nvtag;
+        }
     }
  
     function applyEdit() {
