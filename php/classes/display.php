@@ -189,6 +189,7 @@ class Display {
     }
     /// SERIES
     if (isset($_GET["serie"])) {
+        $this->BD->research_serie("serie");
         echo "
         <form action ='' method='POST'>
             <label for='titre'>Titre :</label>
