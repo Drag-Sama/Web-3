@@ -28,19 +28,13 @@ Class BD {
         }
     }
 
-     public function get_series(){ //renvoie toutes les series
-        $this->connectBD();
-        $sql = "SELECT * FROM serie";
-        $statement = $this->pdo->prepare($sql);
-        $statement->execute() or die(var_dump($statement->errorInfo()));
-        $result = $statement->fetchAll(PDO::FETCH_CLASS, "\serie");
-        return $result;
-    }
+     
 
     function get_serie_tag($tag){ //renvoie les series avec le tag mis en parametre
         $this->connectBD();
-        $sql = "SELECT * FROM serie WHERE serie.tag = $tag";
-        $statement = $this->pdo->prepare($sql);
+        $query = "SELECT * FROM serie WHERE serie.tag = (:tag)";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':tag', $tag);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $result = $statement->fetchAll(PDO::FETCH_CLASS, "..\classes\serie");
         return $result;
@@ -48,21 +42,34 @@ Class BD {
 
 
     public function research_serie(){
-        $sql = "";
-        $this->connectBD();
         if (isset($_GET["text"])) {
             $text = $_GET["text"];
-            $sql = "SELECT DISTINCT serie.titre, serie.tag, saison.affiche FROM serie INNER JOIN saison ON saison.titre_serie = serie.titre 				INNER JOIN 
-            contient ON contient.titre_saison = saison.titre INNER JOIN  episode ON contient.id_episode = episode.id_Episode  INNER JOIN 
-            realise ON realise.id_episode = episode.id_Episode INNER JOIN joue ON joue.titre_saison = saison.titre WHERE (joue.nom_acteur LIKE '%$text%' 
-            OR serie.titre LIKE '%$text%' OR realise.nom_real LIKE '%$text%' OR tag LIKE '%$text%') AND
-             saison.num_saison = 1 AND saison.titre_serie = serie.titre;" ; // renvoie toutes les séries où le texte recherché se trouve dans le titre de la série / le nom d'un acteur ou réalisateur / nom d'un tag.
+            return $this->research_serie_text($text);
         }
         else {
-            $sql = "SELECT DISTINCT serie.titre, serie.tag, saison.affiche FROM serie INNER JOIN saison WHERE
-             saison.titre_serie = serie.titre AND saison.num_saison = 1;";
+            return $this->get_series();
         }
+        
+    }
+
+    public function get_series(){ //renvoie toutes les series
+        $this->connectBD();
+        $sql = "SELECT DISTINCT serie.titre, serie.tag, saison.affiche FROM serie INNER JOIN saison WHERE
+             saison.titre_serie = serie.titre AND saison.num_saison = 1;";
         $statement = $this->pdo->prepare($sql);
+        $statement->execute() or die(var_dump($statement->errorInfo()));
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, "\serie");
+        return $result;
+    }
+
+    private function research_serie_text($text){
+        $this->connectBD();
+        $query = "SELECT DISTINCT serie.titre, serie.tag, saison.affiche FROM serie INNER JOIN saison ON saison.titre_serie = serie.titre 				INNER JOIN 
+        contient ON contient.titre_saison = saison.titre INNER JOIN  episode ON contient.id_episode = episode.id_Episode  INNER JOIN 
+        realise ON realise.id_episode = episode.id_Episode INNER JOIN joue ON joue.titre_saison = saison.titre WHERE (joue.nom_acteur LIKE '%$text%' 
+        OR serie.titre LIKE '%$text%' OR realise.nom_real LIKE '%$text%' OR tag LIKE '%$text%') AND
+        saison.num_saison = 1 AND saison.titre_serie = serie.titre;" ; // renvoie toutes les séries où le texte recherché se trouve dans le titre de la série / le nom d'un acteur ou réalisateur / nom d'un tag.
+        $statement = $this->pdo->prepare($query);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $results = $statement->fetchAll(PDO::FETCH_CLASS, "\serie"); 
         return $results;
