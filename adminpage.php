@@ -1,13 +1,11 @@
 <?php
 require_once "autoload.php";
 ob_start();
+$BD = new BD();
+$displayer = new Display($BD);
+$displayer->displayAdmin();
 ?>
 
-<div class="div-bouton">
-    <button class="db">Tag1</button>
-    <button class="db">Tag2</button>
-    <button class="db">+</button>
-</div>
 
 <?php
 $content = ob_get_clean();

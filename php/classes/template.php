@@ -15,7 +15,7 @@ class Template
             <?php include "header.php" ?>
 
             <div id="injected-content">
-                <?php echo $content ?> <!-- INJECTION DU CONTENU -->
+                <?php echo $content ?>
             </div>
 
             <?php include "footer.html" ?>

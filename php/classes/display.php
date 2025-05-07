@@ -134,6 +134,46 @@ class Display {
             );
         endforeach;
  }
+
+ public function displayAdmin() { // générer adminpage.php
+    /// TAGS
+    echo "<h3 class ='title_button'>Tags :</h3>";
+    $results = $this->BD->get_tags();
+    echo "<div class='div-bouton'>";
+    foreach ($results as $tag): 
+        echo "<button class='db' id='$tag' onclick=''>$tag</button>";
+    endforeach;
+    echo "<button class ='db +'>+</button>";
+    echo "</div>";
+    /// SERIES
+    echo "<h3 class ='title_button'>Series :</h3>";
+    $results = $this->BD->get_series();
+    echo "<div class='div-bouton'>";
+    foreach ($results as $serie): 
+        echo "<button class='db' id='$serie->titre' onclick=''>$serie->titre</button>";
+    endforeach;
+    echo "<button class ='db +' onclick=''>+</button>";
+    echo "</div>";
+    /// ACTEURS
+    echo "<h3 class ='title_button'>Acteurs :</h3>";
+    $results = $this->BD->research_acteur();
+    echo "<div class='div-bouton'>";
+    foreach ($results as $acteur): 
+        echo "<button class='db' id='$acteur->nom' onclick=''>$acteur->nom</button>";
+    endforeach;
+    echo "<button class ='db +'>+</button>";
+    echo "</div>";
+    /// REALS
+    echo "<h3 class ='title_button'>Realisateurs :</h3>";
+    $results = $this->BD->get_reals();
+    echo "<div class='div-bouton'>";
+    foreach ($results as $real): 
+        echo "<button class='db' id='$real->nom' onclick=''>$real->nom</button>";
+    endforeach;
+    echo "<button class ='db +'>+</button>";
+    echo "</div>";
+ }
+
 }
 
     
