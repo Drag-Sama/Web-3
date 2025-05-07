@@ -189,15 +189,39 @@ Class BD {
     }
 
     function applyEditActeur(){
-
+        $this->connectBD();
+        if (isset($_POST["nom"])){
+            $nvNom =  $_POST["nom"];
+            $nom = $_GET["acteur"];
+            $sql = "UPDATE `acteur` SET `nom`='$nvNom',`photo`= acteur.photo,`id_acteur`=acteur.id_acteur WHERE nom = '$nom'";
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute() or die(var_dump($statement->errorInfo()));
+            $_GET["acteur"] = $nvNom;
+        }
     }
 
     function applyEditReal() {
-
+        $this->connectBD();
+        if (isset($_POST["nom"])){
+            $nvNom =  $_POST["nom"];
+            $nom = $_GET["real"];
+            $sql = "UPDATE `realisateur` SET `nom`='$nvNom',`photo`= realisateur.photo,`id_real`=realisateur.id_real WHERE nom = '$nom'";
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute() or die(var_dump($statement->errorInfo()));
+            $_GET["real"] = $nvNom;
+        }
     }
 
     function applyEditSerie() {
-
+        $this->connectBD();
+        if (isset($_POST["titre"])){
+            $nvTitre =  $_POST["titre"];
+            $titre = $_GET["serie"];
+            $sql = "UPDATE `serie` SET `titre`='$nvTitre',`tag`= serie.tag,`id_serie`=serie.id_serie WHERE serie.titre = '$titre'";
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute() or die(var_dump($statement->errorInfo()));
+            $_GET["serie"] = $nvTitre;
+        }
     }
 
     function applyEditTag(){
@@ -206,8 +230,6 @@ Class BD {
             $nvtag =  $_POST["tag"];
             $tag = $_GET["tag"];
             $sql = "UPDATE `tag` SET `tag`= '$nvtag',`id_tag`=tag.id_tag WHERE tag.tag = '$tag'";
-            var_dump($tag);
-            var_dump($nvtag);
             $statement = $this->pdo->prepare($sql);
             $statement->execute() or die(var_dump($statement->errorInfo()));
             $_GET["tag"] = $nvtag;
