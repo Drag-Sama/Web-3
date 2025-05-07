@@ -27,7 +27,7 @@ class Display {
 
     function displayResearch() : void {
     
-        $results = $this->BD->research_serie();
+        $results = $this->BD->research_serie("text");
         foreach ($results as $serie):
             echo(
                 "
