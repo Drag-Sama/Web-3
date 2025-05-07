@@ -133,7 +133,7 @@ Class BD {
 
     function get_tags(){
         $this->connectBD();
-        $sql = "SELECT * FROM tag";
+        $sql = "SELECT tag.tag FROM tag";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $result = $statement->fetchAll(PDO::FETCH_COLUMN);
