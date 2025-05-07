@@ -148,11 +148,11 @@ class Display {
     echo "<button class ='db +'>+</button>";
     echo "</div>";
     /// SERIES
-    echo "<h3 class ='title_button'>Series :</h3>";
-    $results = $this->BD->get_series();
+    echo "<h3 class ='title_button'>Saison :</h3>";
+    $results = $this->BD->get_saisons();
     echo "<div class='div-bouton'>";
-    foreach ($results as $serie): 
-        echo "<button class='db' id='$serie->titre' onclick=\"location.href = 'editadmin.php?serie=". urlencode($serie->titre) ."'\">$serie->titre</button>";
+    foreach ($results as $saison): 
+        echo "<button class='db' id='$saison->titre' onclick=\"location.href = 'editadmin.php?saison=". urlencode($saison->titre) ."'\">$saison->titre</button>";
     endforeach;
     echo "<button class ='db +' onclick=''>+</button>";
     echo "</div>";
@@ -188,19 +188,8 @@ class Display {
         ";
     }
     /// SERIES
-    if (isset($_GET["serie"])) {
-        $this->BD->research_serie("serie");
-        echo "
-        <form action ='' method='POST'>
-            <label for='titre'>Titre :</label>
-            <input class='' id='titre' name='titre' value='" . urldecode($_GET["serie"]) . "'>
-            <label for='tag'>Tag :</label>
-            <input class='' id='tag' name='tag'>
-            <label for='affiche'>URL Affiche :</label>
-            <input class='' id='affiche' name='affiche'>
-            <button>Valider</button>
-        </form>
-        ";
+    if (isset($_GET["saison"])) {
+        $this->displayEditSaisons();
     }
     /// ACTEURS ou REALS
     if (isset($_GET["acteur"]) || isset($_GET["real"])) {
@@ -220,8 +209,39 @@ class Display {
     }
  }
 
+ function displayEditSaisons() {
+    if (isset($_GET['saison'])) {
+        $titre = $_GET['saison'];
+        $saisons = $this->BD->get_saisons_titre_saison($titre);
+        foreach ($saisons as $saison):
+            echo"<form action ='' method='POST'> ";
+            echo"<div class = 'saison-container' id = '$saison->num_saison'>";
+            echo "<img class='saison-image' src='/web3/Web-3/photos/saison/$saison->affiche'/>";
+            echo"<input class='saison-title' name = 'titre' value ='".$saison->titre."'>";
+            echo "<textarea  class = 'descr' name = 'descr' >$saison->descr</textarea>   ";
+            echo "<button>Valider</button>";
+            echo"</div>";
+            echo"</form>";
+        endforeach;
+    }
+}
+
  
 }
 
     
 ?>
+
+
+<!--$this->BD->research_serie("serie");
+        echo "
+        <form action ='' method='POST'>
+            <label for='titre'>Titre :</label>
+            <input class='' id='titre' name='titre' value='" . urldecode($_GET["serie"]) . "'>
+            <label for='tag'>Tag :</label>
+            <input class='' id='tag' name='tag'>
+            <label for='affiche'>URL Affiche :</label>
+            <input class='' id='affiche' name='affiche'>
+            <button>Valider</button>
+        </form>
+        "; -->

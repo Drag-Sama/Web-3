@@ -188,6 +188,23 @@ Class BD {
         return $result[0];
     }
 
+    function get_saisons(){
+        $this->connectBD();
+        $sql = "SELECT saison.titre, saison.affiche, saison.descr, saison.num_saison FROM saison";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute() or die(var_dump($statement->errorInfo()));
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, "\saison");
+        return $result;
+    }
+    function get_saisons_titre_saison($titre){
+        $this->connectBD();
+        $sql = "SELECT saison.titre, saison.affiche, saison.descr, saison.num_saison FROM saison WHERE saison.titre = '".$titre."'";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute() or die(var_dump($statement->errorInfo()));
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, "\saison");
+        return $result;
+    }
+
     function applyEditActeur(){
         $this->connectBD();
         if (isset($_POST["nom"])){
@@ -196,7 +213,7 @@ Class BD {
             $sql = "UPDATE `acteur` SET `nom`='$nvNom',`photo`= acteur.photo,`id_acteur`=acteur.id_acteur WHERE nom = '$nom'";
             $statement = $this->pdo->prepare($sql);
             $statement->execute() or die(var_dump($statement->errorInfo()));
-            $_GET["acteur"] = $nvNom;
+            header("Location: /web3/Web-3/editadmin.php?acteur=".urlencode($nvNom)."");
         }
     }
 
@@ -208,7 +225,7 @@ Class BD {
             $sql = "UPDATE `realisateur` SET `nom`='$nvNom',`photo`= realisateur.photo,`id_real`=realisateur.id_real WHERE nom = '$nom'";
             $statement = $this->pdo->prepare($sql);
             $statement->execute() or die(var_dump($statement->errorInfo()));
-            $_GET["real"] = $nvNom;
+            header("Location: /web3/Web-3/editadmin.php?real=".urlencode($nvNom)."");
         }
     }
 
@@ -232,16 +249,35 @@ Class BD {
             $sql = "UPDATE `tag` SET `tag`= '$nvtag',`id_tag`=tag.id_tag WHERE tag.tag = '$tag'";
             $statement = $this->pdo->prepare($sql);
             $statement->execute() or die(var_dump($statement->errorInfo()));
-            $_GET["tag"] = $nvtag;
+            header("Location: /web3/Web-3/editadmin.php?tag=".urlencode($nvtag)."");
+        }
+    }
+
+    public function applyEditSaison(){
+        $this->connectBD();
+        if (isset($_POST["descr"])){
+            $nvDescr =  $_POST["descr"];
+            $nvTitre =  $_POST["titre"];
+            $titre = $_GET["saison"];
+            $sql = "UPDATE `saison` SET `titre`='$nvTitre',`id_serie`=saison.id_serie,
+            `affiche`=saison.affiche,`descr`='$nvDescr',`num_saison`=saison.num_saison,`id_saison`=saison.id_saison 
+            WHERE saison.titre = '$titre' ";
+            
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute() or die(var_dump($statement->errorInfo()));
+            $chemin = urlencode("$nvTitre") ;
+            header("Location: /web3/Web-3/editadmin.php?saison=$chemin");
         }
     }
  
     function applyEdit() {
         if (isset($_GET["tag"])) $this->applyEditTag();
-        else if (isset($_GET["serie"])) $this->applyEditSerie();
+        else if (isset($_GET["saison"])) $this->applyEditSaison();
         else if (isset($_GET["acteur"])) $this->applyEditActeur();
         else if (isset($_GET["real"])) $this->applyEditReal();
     }
+
+
 
 }
 ?>

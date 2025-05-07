@@ -11,6 +11,7 @@ $displayer->displayEdit();
 
 
 
+
 <?php 
 $content = ob_get_clean();
 Template::render($content);

@@ -122,5 +122,14 @@ body{
     justify-content: center;
 }
 
+.saison-description{
+    margin-bottom: 20px;
+    color: white;
+}
 
+.descr{
+    color:  black;
+    width: 600px;
+    height: 300px;
+}
 
