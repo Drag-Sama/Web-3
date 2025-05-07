@@ -54,8 +54,8 @@ Class BD {
 
     public function get_series(){ //renvoie toutes les series
         $this->connectBD();
-        $sql = "SELECT DISTINCT serie.titre, serie.tag, saison.affiche FROM serie INNER JOIN saison WHERE
-             saison.titre_serie = serie.titre AND saison.num_saison = 1;";
+        $sql = "SELECT DISTINCT serie.titre, tag.tag, saison.affiche FROM serie INNER JOIN saison ON saison.id_serie = serie.id_serie INNER JOIN 
+        tag ON serie.tag = tag.id_tag WHERE saison.id_serie = serie.id_serie AND saison.num_saison = 1;";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $result = $statement->fetchAll(PDO::FETCH_CLASS, "\serie");
@@ -64,12 +64,14 @@ Class BD {
 
     private function research_serie_text($text){
         $this->connectBD();
-        $query = "SELECT DISTINCT serie.titre, serie.tag, saison.affiche FROM serie INNER JOIN saison ON saison.titre_serie = serie.titre 				INNER JOIN 
-        contient ON contient.titre_saison = saison.titre INNER JOIN  episode ON contient.id_episode = episode.id_Episode  INNER JOIN 
-        realise ON realise.id_episode = episode.id_Episode INNER JOIN joue ON joue.titre_saison = saison.titre WHERE (joue.nom_acteur LIKE '%$text%' 
-        OR serie.titre LIKE '%$text%' OR realise.nom_real LIKE '%$text%' OR tag LIKE '%$text%') AND
-        saison.num_saison = 1 AND saison.titre_serie = serie.titre;" ; // renvoie toutes les séries où le texte recherché se trouve dans le titre de la série / le nom d'un acteur ou réalisateur / nom d'un tag.
-        $statement = $this->pdo->prepare($query);
+        $sql = "SELECT DISTINCT serie.titre, tag.tag, saison.affiche FROM serie INNER JOIN saison ON saison.id_serie = serie.id_serie 				INNER JOIN 
+        contient ON contient.id_saison = saison.id_saison INNER JOIN  episode ON contient.id_episode = episode.id_Episode  INNER JOIN 
+        realise ON realise.id_episode = episode.id_Episode INNER JOIN joue ON joue.id_saison = saison.id_saison 
+        INNER JOIN acteur ON joue.id_acteur = acteur.id_acteur INNER JOIN realisateur ON realise.id_real = realisateur.id_real
+        INNER JOIN tag ON serie.tag = tag.id_tag WHERE (acteur.nom LIKE '%$text%' 
+        OR serie.titre LIKE '%$text%' OR realisateur.nom LIKE '%$text%' OR tag.tag LIKE '%$text%') AND
+        saison.num_saison = 1 AND saison.id_serie = serie.id_serie;" ; // renvoie toutes les séries où le texte recherché se trouve dans le titre de la série / le nom d'un acteur ou réalisateur / nom d'un tag.
+        $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $results = $statement->fetchAll(PDO::FETCH_CLASS, "\serie"); 
         return $results;
@@ -109,8 +111,8 @@ Class BD {
 
     function get_acteurs_titre($titre){
         $this->connectBD();
-        $sql = "SELECT DISTINCT acteur.nom, acteur.photo FROM `acteur` INNER JOIN joue ON joue.nom_acteur = acteur.nom INNER JOIN
-         saison ON saison.titre = joue.titre_saison WHERE saison.titre_serie = '". $titre ."';";
+        $sql = "SELECT DISTINCT acteur.nom, acteur.photo FROM `acteur` INNER JOIN joue ON joue.id_acteur = acteur.id_acteur INNER JOIN
+         saison ON saison.id_saison = joue.id_saison INNER JOIN serie ON saison.id_serie = serie.id_serie WHERE serie.titre = '". $titre ."';";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $result = $statement->fetchAll(PDO::FETCH_CLASS, "\acteur");
@@ -140,7 +142,7 @@ Class BD {
         $this->connectBD();
         $sql = "SELECT episode.titre,episode.desc, episode.duree, episode.num_episode, saison.num_saison, episode.id_Episode
         FROM episode INNER JOIN contient ON contient.id_episode = episode.id_Episode INNER JOIN saison ON 
-        saison.titre = contient.titre_saison WHERE saison.titre_serie = '". $titre ."'";
+        saison.id_saison = contient.id_saison INNER JOIN serie ON saison.id_serie = serie.id_serie WHERE serie.titre = '". $titre ."';";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $result = $statement->fetchAll(PDO::FETCH_CLASS, "\\episode");
@@ -149,7 +151,7 @@ Class BD {
 
     function get_real_episode($id_episode){
         $this->connectBD();
-        $sql = "SELECT realisateur.nom, realisateur.photo FROM realisateur INNER JOIN realise ON realise.nom_real = realisateur.nom 
+        $sql = "SELECT realisateur.nom, realisateur.photo FROM realisateur INNER JOIN realise ON realise.id_real = realisateur.id_real 
         WHERE realise.id_episode = $id_episode;";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
@@ -168,7 +170,7 @@ Class BD {
 
     function get_saison_serie($titre){ //renvoie les saisons de la serie dont le titre est mis en paramètre
         $this->connectBD();
-        $sql = "SELECT * FROM saison WHERE saison.titre_serie = '". $titre ."'";
+        $sql = "SELECT * FROM saison WHERE saison.titre = '". $titre ."'";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $result = $statement->fetchAll(PDO::FETCH_CLASS, "\saison");
@@ -177,7 +179,7 @@ Class BD {
 
     function get_first_saison_serie($titre){ //renvoie la premiere saison de la serie dont le titre est mis en paramètre
         $this->connectBD();
-        $sql = "SELECT * FROM saison WHERE saison.titre_serie = '". $titre ."' AND saison.num_saison = 1";
+        $sql = "SELECT * FROM saison WHERE saison.titre = '". $titre ."' AND saison.num_saison = 1";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $result = $statement->fetchAll(PDO::FETCH_CLASS, "\saison");

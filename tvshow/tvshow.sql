@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 05 mai 2025 à 16:36
+-- Généré le : mer. 07 mai 2025 à 10:48
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -29,27 +29,30 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `acteur` (
   `nom` varchar(255) NOT NULL,
-  `photo` text NOT NULL
+  `photo` text NOT NULL,
+  `id_acteur` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `acteur`
 --
 
-INSERT INTO `acteur` (`nom`, `photo`) VALUES
-('Aaron Paul', 'aaron_paul.jpg'),
-('Alexis Tomassian', 'alexis_tomassian.jpg'),
-('Anna Gunn', 'anna_gunn.jpg'),
-('Bryan Cranston', 'bryan_cranston.jpg'),
-('Christopher Masterson', 'christopher_masterson.jpg'),
-('Dorothée Pousséo', 'dorothée-pousséo.jpg'),
-('Ella Purnell ', 'ella_purnell.jpg'),
-('Erik Per Sullivan', 'erik_per_sullivan.jpg'),
-('Frankie Muniz', 'frankie_muniz.jpg'),
-('Frédéric Souterelle', 'frédéric_souterelle.jpg'),
-('Hailee Steinfeld', 'hailee_steinfeld.jpg'),
-('Jane Kaczmarek', 'jane-kaczmarek.jpg'),
-('Justin Berfied', 'justin-berfied.jpg');
+INSERT INTO `acteur` (`nom`, `photo`, `id_acteur`) VALUES
+('Aaron Paul', 'aaron_paul.jpg', 1),
+('Adam Bernstein', 'adam_bernstein.jpg', 2),
+('Alexis Tomassian', 'alexis_tomassian.jpg', 3),
+('Anna Gunn', 'anna_gunn.jpg', 4),
+('Bryan Cranston', 'bryan_cranston.jpg', 5),
+('Dorothée Pousséo', 'dorothée-pousséo.jpg', 6),
+('Ella Purnell', 'ella_purnell.jpg', 7),
+('Erik Per Sullivan', 'erik_per_sullivan.jpg', 8),
+('Frankie Muniz', 'frankie_muniz.jpg', 9),
+('Frédéric Souterelle', 'frédéric_souterelle.jpg', 10),
+('Hailee Steinfeld', 'hailee_steinfeld.jpg', 11),
+('Jane Kaczmarek', 'jane-kaczmarek.jpg', 12),
+('Justin Berfied', 'justin-berfied.jpg', 13),
+('Megumi Han', 'megumi_han.jpg', 14),
+('Shuichi Ikeda ', 'shuichi_ikeda.jpg', 15);
 
 -- --------------------------------------------------------
 
@@ -58,68 +61,75 @@ INSERT INTO `acteur` (`nom`, `photo`) VALUES
 --
 
 CREATE TABLE `contient` (
-  `titre_saison` varchar(255) NOT NULL,
-  `id_episode` int(255) NOT NULL
+  `id_episode` int(11) NOT NULL,
+  `id_saison` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `contient`
 --
 
-INSERT INTO `contient` (`titre_saison`, `id_episode`) VALUES
-('Saison 1 Malcolm', 1),
-('Saison 1 Malcolm', 2),
-('Saison 1 Malcolm', 3),
-('Saison 1 Malcolm', 4),
-('Saison 1 Malcolm', 5),
-('Saison 1 Breaking Bad', 6),
-('Saison 1 Breaking Bad', 7),
-('Saison 1 Breaking Bad', 8),
-('Saison 1 Breaking Bad', 9),
-('Saison 1 Breaking Bad', 10),
-('Saison 1 Breaking Bad', 11),
-('Saison 1 Breaking Bad', 12),
-('Saison 2 Breaking Bad', 13),
-('Saison 2 Breaking Bad', 14),
-('Saison 2 Breaking Bad', 15),
-('Saison 2 Breaking Bad', 16),
-('Saison 2 Breaking Bad', 17),
-('Saison 2 Breaking Bad', 18),
-('Saison 2 Breaking Bad', 19),
-('Saison 2 Breaking Bad', 20),
-('Saison 2 Breaking Bad', 21),
-('Saison 2 Breaking Bad', 22),
-('Saison 2 Breaking Bad', 23),
-('Saison 2 Breaking Bad', 24),
-('Saison 2 Breaking Bad', 25),
-('Saison 1 Cyberpunk Edgerunners', 26),
-('Saison 1 Cyberpunk Edgerunners', 27),
-('Saison 1 Cyberpunk Edgerunners', 28),
-('Saison 1 Cyberpunk Edgerunners', 29),
-('Saison 1 Cyberpunk Edgerunners', 30),
-('Saison 1 Cyberpunk Edgerunners', 31),
-('Saison 1 Cyberpunk Edgerunners', 32),
-('Saison 1 Cyberpunk Edgerunners', 33),
-('Saison 1 Cyberpunk Edgerunners', 34),
-('Saison 1 Cyberpunk Edgerunners', 35),
-('Saison 1 Arcane', 36),
-('Saison 1 Arcane', 37),
-('Saison 1 Arcane', 38),
-('Saison 1 Arcane', 39),
-('Saison 1 Arcane', 41),
-('Saison 1 Arcane', 42),
-('Saison 1 Arcane', 43),
-('Saison 1 Arcane', 40),
-('Saison 1 Arcane', 44),
-('Saison 2 Arcane', 45),
-('Saison 2 Arcane', 46),
-('Saison 2 Arcane', 47),
-('Saison 2 Arcane', 48),
-('Saison 2 Arcane', 49),
-('Saison 2 Arcane', 50),
-('Saison 2 Arcane', 51),
-('Saison 2 Arcane', 52),
-('Saison 2 Arcane', 53);
+INSERT INTO `contient` (`id_episode`, `id_saison`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 2),
+(7, 2),
+(8, 2),
+(9, 2),
+(10, 1),
+(11, 2),
+(12, 2),
+(13, 3),
+(14, 3),
+(15, 3),
+(16, 3),
+(17, 3),
+(18, 3),
+(19, 3),
+(20, 3),
+(21, 3),
+(22, 3),
+(23, 3),
+(24, 3),
+(25, 3),
+(26, 4),
+(27, 4),
+(28, 4),
+(29, 4),
+(30, 4),
+(31, 4),
+(31, 4),
+(32, 4),
+(33, 4),
+(34, 4),
+(35, 4),
+(36, 5),
+(37, 5),
+(38, 5),
+(39, 5),
+(40, 5),
+(41, 5),
+(42, 5),
+(43, 5),
+(44, 5),
+(45, 6),
+(46, 6),
+(47, 6),
+(48, 6),
+(49, 6),
+(50, 6),
+(51, 6),
+(52, 6),
+(53, 6),
+(54, 7),
+(55, 7),
+(56, 7),
+(57, 7),
+(58, 7),
+(59, 7);
 
 -- --------------------------------------------------------
 
@@ -193,7 +203,13 @@ INSERT INTO `episode` (`titre`, `desc`, `duree`, `num_episode`, `id_Episode`) VA
 ('Le message caché dans le schéma', 'Dans un lieu méconnu, c\'est pourtant une figure bien connue qui prodigue l\'apaisement. Une trahison stupéfiante menace de bouleverser d\'innombrables vies.', 40, 6, 50),
 ('Comme si c\'était la première fois', 'Un instant d\'obscurité, un autre de lumière… et une vision de ce qui aurait pu être.', 40, 7, 51),
 ('Tuer est un cycle', 'La tempête qui se prépare nourrit une série de transformations saisissantes. Ailleurs, l\'étincelle de la rébellion brûle toujours.', 40, 8, 52),
-('La terre sous tes ongles', 'Magie. Science. Pouvoir. Vengeance. Dans un final épique, les destins se heurtent, déchaînant une guerre sans merci.', 40, 9, 53);
+('La terre sous tes ongles', 'Magie. Science. Pouvoir. Vengeance. Dans un final épique, les destins se heurtent, déchaînant une guerre sans merci.', 40, 9, 53),
+('Les Yeux Bleus de Casval', 'U.C. 0068 - Tout en prononçant son discours pour déclarer l\'indépendance de la République Autonome de Munzo de la Fédération de la Terre, Zeon Zum Deikun meurt subitement d\'une crise cardiaque. Cela provoque des émeutes de masse dans la colonie contre la Fédération alors que Degwin Sodo Zabi, l\'adjoint de Deikun, monte au pouvoir. Au milieu du chaos, les enfants de Deikun, Casval et Artesia, avec le chat Lucifer d\'Artesia et Jimba Ral, le vieil ami de Deikun, s\'embarquent à bord d\'un cargo qui se dirige vers la Terre pour échapper au régime de Zabi.', 63, 1, 54),
+('Le chagrin d\'Artesia', 'Trois années se sont écoulées depuis que Casval, Artesia et Jimba ont fui vers la Terre et se sont réfugiés dans le château de Don Teabolo, un aristocrate et un ami de confiance des Deikuns, en Andalousie, en Espagne; Teabolo adopte les enfants et les renomme respectivement Édouard et Sayla.', 57, 2, 55),
+('La rébellion de l\'aube', 'Suite à un problème de sécurité au spatioport, Édouard et Char changent de vêtements et Char roule le vol d\'Édouard, qui est saboté par les forces de Zeon. Ayant falsifié sa mort aux dépens de son ami, Édouard assume l\'identité de Char et suit une formation de cadet de Zeon.', 68, 3, 56),
+('La veille du destin', 'Après le succès de la rébellion de l\'aube, Degwin négocie avec le vice-amiral Revil pour le retrait complet des forces de la Fédération du côté 3 afin d\'empêcher que de tels incidents ne se reproduisent.', 68, 4, 57),
+('Affrontement à Loum', 'Le 3 janvier U.C. 0079, la Principauté de Zeon déclare la guerre à la Fédération de la Terre et massacre le gouvernement anti-Zeon de Side 2 \"Hatte\". Dans le même temps, une force d\'assaut mobile dirigée par Kycila capture les villes lunaires de Grenade et Von Braun.', 84, 5, 58),
+('La naissance de la Comète Rouge', 'Le champ de bataille s’est déplacé à Loum, et un affrontement entre les flottes de Zeon et de la Fédération Terrienne est sur le point de se déclencher. Char Aznable, jeune pilote des forces de Zeon, bâti alors sa renommée sur ses exploits remarquables aux commandes de son Mobile Suit Zaku rouge.', 83, 6, 59);
 
 -- --------------------------------------------------------
 
@@ -202,34 +218,35 @@ INSERT INTO `episode` (`titre`, `desc`, `duree`, `num_episode`, `id_Episode`) VA
 --
 
 CREATE TABLE `joue` (
-  `titre_saison` varchar(255) NOT NULL,
-  `nom_acteur` varchar(255) NOT NULL
+  `id_acteur` int(11) NOT NULL,
+  `id_saison` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `joue`
 --
 
-INSERT INTO `joue` (`titre_saison`, `nom_acteur`) VALUES
-('Saison 1 Malcolm', 'Jane Kaczmarek'),
-('Saison 1 Malcolm', 'Bryan Cranston'),
-('Saison 1 Malcolm', 'Justin Berfied'),
-('Saison 1 Malcolm', 'Frankie Muniz'),
-('Saison 1 Malcolm', 'Erik Per Sullivan'),
-('Saison 1 Malcolm', 'Christopher Masterson'),
-('Saison 1 Breaking Bad', 'Aaron Paul'),
-('Saison 1 Breaking Bad', 'Bryan Cranston'),
-('Saison 2 Breaking Bad', 'Aaron Paul'),
-('Saison 2 Breaking Bad', 'Bryan Cranston'),
-('Saison 1 Breaking Bad', 'Anna Gunn'),
-('Saison 2 Breaking Bad', 'Anna Gunn'),
-('Saison 1 Cyberpunk Edgerunners', 'Alexis Tomassian'),
-('Saison 1 Cyberpunk Edgerunners', 'Dorothée Pousséo'),
-('Saison 1 Cyberpunk Edgerunners', 'Frédéric Souterelle'),
-('Saison 1 Arcane', 'Hailee Steinfeld'),
-('Saison 1 Arcane', 'Ella Purnell '),
-('Saison 2 Arcane', 'Ella Purnell '),
-('Saison 2 Arcane', 'Hailee Steinfeld');
+INSERT INTO `joue` (`id_acteur`, `id_saison`) VALUES
+(1, 2),
+(1, 3),
+(5, 2),
+(5, 3),
+(3, 4),
+(4, 2),
+(4, 3),
+(6, 4),
+(7, 5),
+(7, 6),
+(8, 1),
+(9, 1),
+(10, 5),
+(10, 6),
+(11, 5),
+(11, 6),
+(12, 1),
+(13, 1),
+(14, 7),
+(15, 7);
 
 -- --------------------------------------------------------
 
@@ -239,33 +256,35 @@ INSERT INTO `joue` (`titre_saison`, `nom_acteur`) VALUES
 
 CREATE TABLE `realisateur` (
   `nom` varchar(255) NOT NULL,
-  `photo` text NOT NULL
+  `photo` text NOT NULL,
+  `id_real` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `realisateur`
 --
 
-INSERT INTO `realisateur` (`nom`, `photo`) VALUES
-('Adam Bernstein', 'adam_bernstein.jpg'),
-('Andrew Orenstein', 'andrew_orenstein.png'),
-('Arlene Sanford', 'arlene_sanford.jpg'),
-('Bryan Cranston', 'bryan_cranston.jpg'),
-('Charles Haid', 'charles_haid.jpg'),
-('Félix Enríquez Alcalá', 'félix_enríquez_alcalá.jpg'),
-('Hiroyuki Imaishi', 'hiroyuki_imaishi.jpg'),
-('Jeff Melman', 'jeff_melman.jpg'),
-('Jim McKay', 'jim_mckay.jpg'),
-('Johan Renck', 'johan_renck.jpg'),
-('John Dahl', 'john_dahl.jpg'),
-('Nick Marck', 'nick_marck.jpg'),
-('Pascal Charrue', 'pascal_charrue.jpg'),
-('Peter Medak', 'peter_medak.jpg'),
-('Terry McDonough', 'terry_mcdonough.jpg'),
-('Tim Hunter', 'tim_hunter.jpg'),
-('Todd Holland', 'todd_holland.png'),
-('Tricia Borck.jpg', 'tricia_borck.jpg'),
-('Vince Gilligan', 'vince_gilligan.jpg');
+INSERT INTO `realisateur` (`nom`, `photo`, `id_real`) VALUES
+('Adam Bernstein', 'adam_bernstein.jpg', 1),
+('Andrew Orenstein', 'andrew_orenstein.png', 2),
+('Arlene Sanford', 'arlene_sanford.jpg', 3),
+('Bryan Cranston', 'bryan_cranston.jpg', 4),
+('Charles Haid', 'charles_haid.jpg', 5),
+('Félix Enríquez Alcalá', 'félix_enríquez_alcalá.jpg', 6),
+('Hiroyuki Imaishi', 'hiroyuki_imaishi.jpg', 7),
+('Jeff Melman', 'jeff_melman.jpg', 8),
+('Jim Mckay', 'jim_mckay.jpg', 9),
+('Johan Renck', 'johan_renck.jpg', 10),
+('John Dahl', 'john_dahl.jpg', 11),
+('Nick Marck', 'nick_marck.jpg', 12),
+('Pascal Charrue', 'pascal_charrue.jpg', 13),
+('Peter Medak', 'peter_medak.jpg', 14),
+('Takashi Imanishi', 'takashi_imanishi.jpg', 15),
+('Terry Mcdonough', 'terry_mcdonough.jpg', 16),
+('Tim Hunter', 'tim_hunter.jpg', 17),
+('Todd Holland', 'todd_holland.png', 18),
+('Tricia Borck', 'tricia_borck.jpg', 19),
+('Vince Gilligan', 'vince_gilligan.jpg', 20);
 
 -- --------------------------------------------------------
 
@@ -274,69 +293,74 @@ INSERT INTO `realisateur` (`nom`, `photo`) VALUES
 --
 
 CREATE TABLE `realise` (
-  `nom_real` varchar(255) NOT NULL,
-  `id_episode` int(255) NOT NULL
+  `id_real` int(11) NOT NULL,
+  `id_episode` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `realise`
 --
 
-INSERT INTO `realise` (`nom_real`, `id_episode`) VALUES
-('Todd Holland', 1),
-('Arlene Sanford', 2),
-('Todd Holland', 3),
-('Andrew Orenstein', 3),
-('Nick Marck', 4),
-('Jeff Melman', 5),
-('Vince Gilligan', 6),
-('Adam Bernstein', 7),
-('Adam Bernstein', 8),
-('Jim McKay', 9),
-('Tricia Borck.jpg', 10),
-('Peter Medak', 11),
-('Tim Hunter', 12),
-('Bryan Cranston', 13),
-('Charles Haid', 14),
-('Terry McDonough', 15),
-('John Dahl', 16),
-('Johan Renck', 17),
-('Peter Medak', 18),
-('Félix Enríquez Alcalá', 19),
-('Terry McDonough', 20),
-('Terry McDonough', 21),
-('Terry McDonough', 22),
-('Terry McDonough', 23),
-('Terry McDonough', 24),
-('Adam Bernstein', 25),
-('Hiroyuki Imaishi', 26),
-('Hiroyuki Imaishi', 27),
-('Hiroyuki Imaishi', 28),
-('Hiroyuki Imaishi', 29),
-('Hiroyuki Imaishi', 30),
-('Hiroyuki Imaishi', 31),
-('Hiroyuki Imaishi', 32),
-('Hiroyuki Imaishi', 33),
-('Hiroyuki Imaishi', 34),
-('Hiroyuki Imaishi', 35),
-('Pascal Charrue', 36),
-('Pascal Charrue', 37),
-('Pascal Charrue', 38),
-('Pascal Charrue', 39),
-('Pascal Charrue', 40),
-('Pascal Charrue', 41),
-('Pascal Charrue', 42),
-('Pascal Charrue', 43),
-('Pascal Charrue', 44),
-('Pascal Charrue', 45),
-('Pascal Charrue', 46),
-('Pascal Charrue', 47),
-('Pascal Charrue', 48),
-('Pascal Charrue', 49),
-('Pascal Charrue', 50),
-('Pascal Charrue', 51),
-('Pascal Charrue', 52),
-('Pascal Charrue', 53);
+INSERT INTO `realise` (`id_real`, `id_episode`) VALUES
+(13, 36),
+(13, 37),
+(13, 38),
+(13, 39),
+(13, 40),
+(13, 41),
+(13, 42),
+(13, 43),
+(13, 44),
+(13, 45),
+(13, 46),
+(13, 47),
+(13, 48),
+(13, 49),
+(13, 50),
+(13, 51),
+(13, 52),
+(13, 53),
+(7, 54),
+(7, 55),
+(7, 56),
+(7, 57),
+(7, 58),
+(7, 59),
+(15, 26),
+(15, 27),
+(15, 28),
+(15, 29),
+(15, 30),
+(15, 31),
+(15, 32),
+(15, 33),
+(15, 34),
+(15, 35),
+(20, 6),
+(20, 9),
+(1, 10),
+(9, 11),
+(1, 25),
+(1, 24),
+(1, 23),
+(11, 22),
+(6, 21),
+(14, 20),
+(10, 19),
+(11, 18),
+(16, 17),
+(5, 15),
+(4, 16),
+(17, 15),
+(17, 14),
+(19, 13),
+(9, 12),
+(2, 1),
+(18, 1),
+(3, 2),
+(18, 3),
+(12, 4),
+(8, 5);
 
 -- --------------------------------------------------------
 
@@ -346,23 +370,25 @@ INSERT INTO `realise` (`nom_real`, `id_episode`) VALUES
 
 CREATE TABLE `saison` (
   `titre` varchar(255) NOT NULL,
-  `titre_serie` varchar(255) NOT NULL,
+  `id_serie` int(255) NOT NULL,
   `affiche` text NOT NULL,
   `descr` text NOT NULL,
-  `num_saison` int(255) NOT NULL
+  `num_saison` int(255) NOT NULL,
+  `id_saison` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `saison`
 --
 
-INSERT INTO `saison` (`titre`, `titre_serie`, `affiche`, `descr`, `num_saison`) VALUES
-('Saison 1 Arcane', 'Arcane', 'arcane_saison1.jpg', 'Championnes de leurs villes jumelles et rivales, deux sœurs se battent dans une guerre où font rage des technologies magiques et des perspectives diamétralement opposées.', 1),
-('Saison 1 Breaking Bad', 'Breaking Bad', 'breaking_bad_saison1.jpg', 'Walter White, 50 ans, est professeur de chimie dans un lycée du Nouveau-Mexique. Son quotidien est bouleversé lorsqu’il apprend qu’il est atteint d’un cancer des poumons incurable. Il n’a plus qu’une seule solution pour mettre rapidement sa famille à l’abri du besoin : fabriquer et vendre une drogue de synthèse. Commence alors une longue descente aux enfers.', 1),
-('Saison 1 Cyberpunk Edgerunners', 'Cyberpunk: Edgerunners', 'cyberpunk_edgerunners.jpg', 'Elle raconte une histoire indépendante sur 10 épisodes à propos d’un enfant des rues essayant de survivre dans une ville du futur obsédée par la technologie et les modifications corporelles. Ayant tout à perdre, il choisit de rester en vie en devenant un edgerunner - un hors-la-loi mercenaire également connu comme un cyberpunk.', 1),
-('Saison 1 Malcolm', 'Malcolm', 'malcolm_saison1.jpg', 'Petit génie malgré lui, Malcolm vit dans une famille hors du commun. Le jeune surdoué n\'hésite pas à se servir de son intelligence pour faire les 400 coups avec ses frères : Francis, l\'aîné, envoyé dans une école militaire après une bêtise de trop, Reese, une brute pas très maligne, et Dewey, le petit dernier, souffre douleur général. Les parents tentent tant bien que mal de canaliser l\'énergie de ces petits démons. Si Loïs est despotique et veut tout contrôler, Hal, en revanche, est irresponsable et ne pense qu\'à s\'amuser.', 1),
-('Saison 2 Arcane', 'Arcane', 'arcane_saison2.jpg', 'L\'attaque de Jinx contre le Conseil ouvre la voie à une terrible escalade du conflit entre Piltover et Zaun.', 2),
-('Saison 2 Breaking Bad', 'Breaking Bad', 'breaking_bad_saison2.jpg', 'Après les mésaventures rencontrées avec Krazy-8 et Tuco Salamanca, Walter et Jesse décident de monter leur propre affaire. Mais alors que l’empire d\'Heisenberg s’étend de plus en plus, un deal tourne mal et les ennuis commencent. Sur les conseils de Saul Goodman, son avocat véreux, Walter entre en contact avec le propriétaire d’une chaîne de restaurant qui pourrait l’aider à écouler ses stocks de drogue. Pendant ce temps, Skyler commence à avoir des doutes sur son mari tandis que Jesse sombre peu à peu dans l’héroïne.', 2);
+INSERT INTO `saison` (`titre`, `id_serie`, `affiche`, `descr`, `num_saison`, `id_saison`) VALUES
+('Saison 1 Malcolm', 1, 'malcolm_saison1.jpg', 'Petit génie malgré lui, Malcolm vit dans une famille hors du commun. Le jeune surdoué n\'hésite pas à se servir de son intelligence pour faire les 400 coups avec ses frères. Et les parents tentent tant bien que mal de canaliser l\'énergie de ces petits démons.', 1, 1),
+('Saison 1 Breaking Bad', 2, 'breaking_bad_saison1.jpg', 'Walter White, 50 ans, est professeur de chimie dans un lycée du Nouveau-Mexique. Son quotidien est bouleversé lorsqu’il apprend qu’il est atteint d’un cancer des poumons incurable. Il n’a plus qu’une seule solution pour mettre rapidement sa famille à l’abri du besoin : fabriquer et vendre une drogue de synthèse. Commence alors une longue descente aux enfers.', 1, 2),
+('Saison 2 Breaking Bad', 2, 'breaking_bad_saison2.jpg', 'Après les mésaventures rencontrées avec Krazy-8 et Tuco Salamanca, Walter et Jesse décident de monter leur propre affaire. Mais alors que l’empire d\'Heisenberg s’étend de plus en plus, un deal tourne mal et les ennuis commencent. Sur les conseils de Saul Goodman, son avocat véreux, Walter entre en contact avec le propriétaire d’une chaîne de restaurant qui pourrait l’aider à écouler ses stocks de drogue. Pendant ce temps, Skyler commence à avoir des doutes sur son mari tandis que Jesse sombre peu à peu dans l’héroïne.', 2, 3),
+('Saison 1 Cyberpunk', 3, 'cyberpunk_edgerunners.jpg', 'Série animée dérivée du jeu vidéo Cyberpunk 2077. Elle raconte une histoire indépendante sur 10 épisodes à propos d’un enfant des rues essayant de survivre dans une ville du futur obsédée par la technologie et les modifications corporelles. Ayant tout à perdre, il choisit de rester en vie en devenant un edgerunner - un hors-la-loi mercenaire également connu comme un cyberpunk.\r\n\r\n', 1, 4),
+('Saison 1 Arcane', 4, 'arcane_saison1.jpg', 'Championnes de leurs villes jumelles et rivales, deux sœurs se battent dans une guerre où font rage des technologies magiques et des perspectives diamétralement opposées.', 1, 5),
+('Saison 2 Arcane', 4, 'arcane_saison2.jpg', 'L\'attaque de Jinx contre le Conseil ouvre la voie à une terrible escalade du conflit entre Piltover et Zaun.', 2, 6),
+('Saison 1 Gundam The Origin', 5, 'mobile_suit_gundam_the_origin.jpg', 'Une relecture de l\'univers Gundam, se concentrant sur les origines du conflit entre la Fédération Terrestre et la Principauté de Zeon, mettant en lumière les figures emblématiques comme Char Aznable.', 1, 7);
 
 -- --------------------------------------------------------
 
@@ -371,19 +397,21 @@ INSERT INTO `saison` (`titre`, `titre_serie`, `affiche`, `descr`, `num_saison`) 
 --
 
 CREATE TABLE `serie` (
-  `titre` varchar(255) NOT NULL,
-  `tag` varchar(255) NOT NULL
+  `titre` text NOT NULL,
+  `tag` int(255) NOT NULL,
+  `id_serie` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `serie`
 --
 
-INSERT INTO `serie` (`titre`, `tag`) VALUES
-('Arcane', 'action'),
-('Breaking Bad', 'drame'),
-('Malcolm', 'humour'),
-('Cyberpunk: Edgerunners', 'Science-fiction');
+INSERT INTO `serie` (`titre`, `tag`, `id_serie`) VALUES
+('Malcolm', 4, 1),
+('Breaking Bad', 3, 2),
+('Cyberpunk Edgerunner', 2, 3),
+('Arcane', 1, 4),
+('Mobile Suite Gundam The Origin', 2, 5);
 
 -- --------------------------------------------------------
 
@@ -392,18 +420,19 @@ INSERT INTO `serie` (`titre`, `tag`) VALUES
 --
 
 CREATE TABLE `tag` (
-  `nom` varchar(255) NOT NULL
+  `tag` text NOT NULL,
+  `id_tag` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `tag`
 --
 
-INSERT INTO `tag` (`nom`) VALUES
-('action'),
-('drame'),
-('humour'),
-('Science-fiction');
+INSERT INTO `tag` (`tag`, `id_tag`) VALUES
+('Action', 1),
+('Science-Fiction', 2),
+('Drame', 3),
+('Humour', 4);
 
 --
 -- Index pour les tables déchargées
@@ -413,14 +442,14 @@ INSERT INTO `tag` (`nom`) VALUES
 -- Index pour la table `acteur`
 --
 ALTER TABLE `acteur`
-  ADD PRIMARY KEY (`nom`);
+  ADD PRIMARY KEY (`id_acteur`);
 
 --
 -- Index pour la table `contient`
 --
 ALTER TABLE `contient`
-  ADD KEY `epi_fk_key` (`id_episode`),
-  ADD KEY `sa_fk_key` (`titre_saison`);
+  ADD KEY `contient_episode` (`id_episode`),
+  ADD KEY `contient_saison` (`id_saison`);
 
 --
 -- Index pour la table `episode`
@@ -432,41 +461,41 @@ ALTER TABLE `episode`
 -- Index pour la table `joue`
 --
 ALTER TABLE `joue`
-  ADD KEY `ac_fk_key` (`nom_acteur`),
-  ADD KEY `sai_fk_key` (`titre_saison`);
+  ADD KEY `joue_acteur` (`id_acteur`),
+  ADD KEY `joue_saison` (`id_saison`);
 
 --
 -- Index pour la table `realisateur`
 --
 ALTER TABLE `realisateur`
-  ADD PRIMARY KEY (`nom`);
+  ADD PRIMARY KEY (`id_real`);
 
 --
 -- Index pour la table `realise`
 --
 ALTER TABLE `realise`
-  ADD KEY `epis_fk_key` (`id_episode`),
-  ADD KEY `real_fk_key` (`nom_real`);
+  ADD KEY `realise_real` (`id_real`),
+  ADD KEY `realise_episode` (`id_episode`);
 
 --
 -- Index pour la table `saison`
 --
 ALTER TABLE `saison`
-  ADD PRIMARY KEY (`titre`),
-  ADD KEY `ser_fk_key` (`titre_serie`);
+  ADD PRIMARY KEY (`id_saison`),
+  ADD KEY `saison_serie` (`id_serie`);
 
 --
 -- Index pour la table `serie`
 --
 ALTER TABLE `serie`
-  ADD PRIMARY KEY (`titre`),
+  ADD PRIMARY KEY (`id_serie`),
   ADD KEY `tag_fk_key` (`tag`);
 
 --
 -- Index pour la table `tag`
 --
 ALTER TABLE `tag`
-  ADD PRIMARY KEY (`nom`);
+  ADD PRIMARY KEY (`id_tag`);
 
 --
 -- Contraintes pour les tables déchargées
@@ -476,34 +505,34 @@ ALTER TABLE `tag`
 -- Contraintes pour la table `contient`
 --
 ALTER TABLE `contient`
-  ADD CONSTRAINT `epi_fk_key` FOREIGN KEY (`id_episode`) REFERENCES `episode` (`id_Episode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `sa_fk_key` FOREIGN KEY (`titre_saison`) REFERENCES `saison` (`titre`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `contient_episode` FOREIGN KEY (`id_episode`) REFERENCES `episode` (`id_Episode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `contient_saison` FOREIGN KEY (`id_saison`) REFERENCES `saison` (`id_saison`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `joue`
 --
 ALTER TABLE `joue`
-  ADD CONSTRAINT `ac_fk_key` FOREIGN KEY (`nom_acteur`) REFERENCES `acteur` (`Nom`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `sai_fk_key` FOREIGN KEY (`titre_saison`) REFERENCES `saison` (`titre`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `joue_acteur` FOREIGN KEY (`id_acteur`) REFERENCES `acteur` (`id_acteur`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `joue_saison` FOREIGN KEY (`id_saison`) REFERENCES `saison` (`id_saison`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `realise`
 --
 ALTER TABLE `realise`
-  ADD CONSTRAINT `epis_fk_key` FOREIGN KEY (`id_episode`) REFERENCES `episode` (`id_Episode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `real_fk_key` FOREIGN KEY (`nom_real`) REFERENCES `realisateur` (`Nom`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `realise_episode` FOREIGN KEY (`id_episode`) REFERENCES `episode` (`id_Episode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `realise_real` FOREIGN KEY (`id_real`) REFERENCES `realisateur` (`id_real`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `saison`
 --
 ALTER TABLE `saison`
-  ADD CONSTRAINT `ser_fk_key` FOREIGN KEY (`titre_serie`) REFERENCES `serie` (`titre`);
+  ADD CONSTRAINT `saison_serie` FOREIGN KEY (`id_serie`) REFERENCES `serie` (`id_serie`);
 
 --
 -- Contraintes pour la table `serie`
 --
 ALTER TABLE `serie`
-  ADD CONSTRAINT `tag_fk_key` FOREIGN KEY (`tag`) REFERENCES `tag` (`nom`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `tag_fk_key` FOREIGN KEY (`tag`) REFERENCES `tag` (`id_tag`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
