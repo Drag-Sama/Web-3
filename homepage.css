@@ -117,6 +117,10 @@ body{
 
 .title_button{
     color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 
 
