@@ -183,6 +183,29 @@ Class BD {
         $result = $statement->fetchAll(PDO::FETCH_CLASS, "\saison");
         return $result[0];
     }
+
+    function applyEditActeur(){
+
+    }
+
+    function applyEditReal() {
+
+    }
+
+    function applyEditSerie() {
+
+    }
+
+    function applyEditTag(){
+
+    }
  
+    function applyEdit() {
+        if (isset($_GET["tag"])) $this->applyEditTag();
+        else if (isset($_GET["serie"])) $this->applyEditSerie();
+        else if (isset($_GET["acteur"])) $this->applyEditActeur();
+        else if (isset($_GET["real"])) $this->applyEditReal();
+    }
+
 }
 ?>

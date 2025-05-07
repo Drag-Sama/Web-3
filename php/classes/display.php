@@ -141,7 +141,7 @@ class Display {
     $results = $this->BD->get_tags();
     echo "<div class='div-bouton'>";
     foreach ($results as $tag): 
-        echo "<button class='db' id='$tag' onclick=''>$tag</button>";
+        echo "<button class='db' id='$tag' onclick=\"location.href = 'editadmin.php?tag=$tag'\">$tag</button>";
     endforeach;
     echo "<button class ='db +'>+</button>";
     echo "</div>";
@@ -150,7 +150,7 @@ class Display {
     $results = $this->BD->get_series();
     echo "<div class='div-bouton'>";
     foreach ($results as $serie): 
-        echo "<button class='db' id='$serie->titre' onclick=''>$serie->titre</button>";
+        echo "<button class='db' id='$serie->titre' onclick=\"location.href = 'editadmin.php?serie=". urlencode($serie->titre) ."'\">$serie->titre</button>";
     endforeach;
     echo "<button class ='db +' onclick=''>+</button>";
     echo "</div>";
@@ -159,7 +159,7 @@ class Display {
     $results = $this->BD->research_acteur();
     echo "<div class='div-bouton'>";
     foreach ($results as $acteur): 
-        echo "<button class='db' id='$acteur->nom' onclick=''>$acteur->nom</button>";
+        echo "<button class='db' id='$acteur->nom' onclick=\"location.href = 'editadmin.php?acteur=". urlencode($acteur->nom) ."'\">$acteur->nom</button>";
     endforeach;
     echo "<button class ='db +'>+</button>";
     echo "</div>";
@@ -168,12 +168,56 @@ class Display {
     $results = $this->BD->get_reals();
     echo "<div class='div-bouton'>";
     foreach ($results as $real): 
-        echo "<button class='db' id='$real->nom' onclick=''>$real->nom</button>";
+        echo "<button class='db' id='". $real->nom ."' onclick=\"location.href = 'editadmin.php?real=". urlencode($real->nom) ."'\">$real->nom</button>";
     endforeach;
     echo "<button class ='db +'>+</button>";
     echo "</div>";
  }
 
+ public function displayEdit() {
+    /// TAGS
+    if (isset($_GET["tag"])) {
+        echo "
+        <form action ='' method='POST'> 
+        <label for='tag'>Tag :</label>
+            <input class='' id='tag' name='tag' value=" . $_GET['tag'] . ">
+            <button>Valider</button>
+        </form>
+        ";
+    }
+    /// SERIES
+    if (isset($_GET["serie"])) {
+        echo "
+        <form action ='' method='POST'>
+            <label for='titre'>Titre :</label>
+            <input class='' id='titre' name='titre' value='" . urldecode($_GET["serie"]) . "'>
+            <label for='tag'>Tag :</label>
+            <input class='' id='tag' name='tag'>
+            <label for='affiche'>URL Affiche :</label>
+            <input class='' id='affiche' name='affiche'>
+            <button>Valider</button>
+        </form>
+        ";
+    }
+    /// ACTEURS ou REALS
+    if (isset($_GET["acteur"]) || isset($_GET["real"])) {
+        echo "
+        <form action ='' method='POST'> 
+            <label for='nom'>Nom :</label>
+            <input class='' id='nom' name='nom' value='";
+            if(isset($_GET["acteur"])) echo urldecode($_GET["acteur"]);
+            else echo urldecode($_GET["real"]);
+
+            echo "'>
+            <label for='photo'>URL Photo :</label>
+            <input class='' id='photo' name='photo'>
+            <button>Valider</button>
+        </form>
+        ";
+    }
+ }
+
+ 
 }
 
     
