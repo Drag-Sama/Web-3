@@ -123,7 +123,7 @@ Class BD {
         $sql = "SELECT * FROM realisateur";
         $statement = $this->pdo->prepare($sql);
         $statement->execute() or die(var_dump($statement->errorInfo()));
-        $result = $statement->fetchAll(PDO::FETCH_CLASS, "..\classes\real");
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, "\\real");
         return $result;
     }
 
